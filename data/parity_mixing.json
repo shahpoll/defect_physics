@@ -1,0 +1,29 @@
+{
+  "experiment": "parity_mixing",
+  "source": {
+    "authors": "Adam Gali and Jeronimo R. Maze",
+    "doi": "10.1103/PhysRevB.88.235205",
+    "full_text_url": "https://arxiv.org/pdf/1310.2137v2",
+    "version": "arXiv v2, 14 October 2013",
+    "locators": ["Section III C, Fig. 5"],
+    "value_status": "The paper motivates inversion parity and shelving states. The two-state Hamiltonian and its parameters are a teaching model chosen here, not fitted or extracted from the paper."
+  },
+  "parity_transitions": [
+    {"initial_parity": "g", "final_parity": "g", "example": "Even-to-even, including the idealized ground-to-shelving parity case"},
+    {"initial_parity": "g", "final_parity": "u", "example": "Even-to-odd, including the idealized ground-to-bright parity case"},
+    {"initial_parity": "u", "final_parity": "g", "example": "Odd-to-even"},
+    {"initial_parity": "u", "final_parity": "u", "example": "Odd-to-odd"}
+  ],
+  "model": {
+    "operator_parity": "u",
+    "mixing_strength_min": -0.5,
+    "mixing_strength_max": 0.5,
+    "mixing_grid_points": 401,
+    "weak_limit_strengths": [0.01, 0.001, 0.0001],
+    "hamiltonian_over_Delta": "[[0, lambda], [lambda, 1]] in the dark, bright basis; lambda = V/Delta",
+    "dipole_normalization": "The even-parity ground state is fixed. Its dipole amplitude to the unperturbed dark basis state is zero and to the unperturbed bright basis state is one. Borrowed intensity means normalized squared dipole strength only, without transition-frequency or state-population factors.",
+    "perturbation": "An explicitly inversion-odd coupling, with no conversion to a physical strain or field.",
+    "parameter_status": "All couplings, normalization, and energy units are arbitrary dimensionless teaching choices."
+  },
+  "interpretation": "Opposite parity is necessary, not sufficient, for electric-dipole coupling. The calculation does not include the full D3d, spin, or polarization selection rules and predicts no lifetime, linewidth, rate, or physical strain response. Homogeneous strain may preserve inversion."
+}

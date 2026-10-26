@@ -1,0 +1,5 @@
+initial_parity,final_parity,operator_parity,not_forbidden_by_parity,interpretation,example
+g,g,u,False,Forbidden by inversion parity in the ideal symmetric model,"Even-to-even, including the idealized ground-to-shelving parity case"
+g,u,u,True,Necessary condition only,"Even-to-odd, including the idealized ground-to-bright parity case"
+u,g,u,True,Necessary condition only,Odd-to-even
+u,u,u,False,Forbidden by inversion parity in the ideal symmetric model,Odd-to-odd

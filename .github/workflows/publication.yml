@@ -1,0 +1,63 @@
+name: Build and publish
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publication-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Set up Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: |
+            requirements.txt
+            requirements-publication.txt
+      - name: Set up PDF engine
+        uses: typst-community/setup-typst@fee4b65b091cc546f02ce3be15fad8760f38a108 # v5.3.0
+        with:
+          typst-version: '0.14.2'
+      - name: Install project dependencies
+        run: python -m pip install -r requirements.txt -r requirements-publication.txt
+      - name: Check mathematics and publication pipeline
+        run: PYTHONPATH=src python -m unittest discover -s tests -v
+      - name: Verify public reference evidence
+        run: python tools/check_reference.py
+      - name: Re-execute the three small exercises
+        run: python run_study.py --output build/ci-reference
+      - name: Build reader and printable notes
+        run: python tools/build_publication.py --format all
+      - name: Upload website and PDF downloads
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: build/site
+
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publish GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1

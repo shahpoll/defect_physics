@@ -1,0 +1,26 @@
+{
+  "experiment": "charge_states",
+  "source": {
+    "authors": "Adam Gali and Jeronimo R. Maze",
+    "doi": "10.1103/PhysRevB.88.235205",
+    "full_text_url": "https://arxiv.org/pdf/1310.2137v2",
+    "version": "arXiv v2, 14 October 2013",
+    "locators": ["Section II, Eq. (3)", "Section III B, Fig. 4"],
+    "value_status": "Transition levels and band gap are reported paper values, not results calculated here."
+  },
+  "reported": {
+    "transition_levels_eV": {
+      "zero_to_minus_one": 1.43,
+      "minus_one_to_minus_two": 2.14
+    },
+    "band_gap_eV": 5.34
+  },
+  "model": {
+    "charge_states": [0, -1, -2],
+    "neutral_energy_offset_eV": 0.0,
+    "fermi_grid_points": 1001,
+    "offset_status": "Arbitrary common zero: absolute formation energies are not supplied.",
+    "coverage": "Only q = 0, -1, -2. The positive state in Fig. 4 is omitted because its crossing was not supplied numerically."
+  },
+  "interpretation": "A reconstruction of relative thermodynamic formation-energy lines from reported crossings; not an independent DFT calculation, charge population, or optical excitation calculation."
+}

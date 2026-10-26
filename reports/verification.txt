@@ -1,0 +1,34 @@
+test_charge_sets_the_response_to_fermi_level (test_physics.ChargeStatePhysicsTests.test_charge_sets_the_response_to_fermi_level) ... ok
+test_energy_zero_does_not_change_charge_stability (test_physics.ChargeStatePhysicsTests.test_energy_zero_does_not_change_charge_stability) ... ok
+test_expected_states_on_either_side_of_crossings (test_physics.ChargeStatePhysicsTests.test_expected_states_on_either_side_of_crossings) ... ok
+test_inactive_nonadjacent_crossing_is_not_a_boundary (test_physics.ChargeStatePhysicsTests.test_inactive_nonadjacent_crossing_is_not_a_boundary) ... ok
+test_invalid_and_nonfinite_input_is_rejected (test_physics.ChargeStatePhysicsTests.test_invalid_and_nonfinite_input_is_rejected) ... ok
+test_reported_crossings_and_derived_intercepts (test_physics.ChargeStatePhysicsTests.test_reported_crossings_and_derived_intercepts) ... ok
+test_analytic_45_degree_tensor (test_physics.HyperfinePhysicsTests.test_analytic_45_degree_tensor) ... ok
+test_axial_frame_and_quarter_turn (test_physics.HyperfinePhysicsTests.test_axial_frame_and_quarter_turn) ... ok
+test_coordinate_rotation_preserves_tensor_invariants (test_physics.HyperfinePhysicsTests.test_coordinate_rotation_preserves_tensor_invariants) ... ok
+test_invalid_tensor_or_angles_are_rejected (test_physics.HyperfinePhysicsTests.test_invalid_tensor_or_angles_are_rejected) ... ok
+test_isotropic_and_signed_tensors_are_supported (test_physics.HyperfinePhysicsTests.test_isotropic_and_signed_tensors_are_supported) ... ok
+test_paper_isotropic_averages_and_anisotropy (test_physics.HyperfinePhysicsTests.test_paper_isotropic_averages_and_anisotropy) ... ok
+test_parallel_smaller_than_perp_is_not_mislabeled (test_physics.HyperfinePhysicsTests.test_parallel_smaller_than_perp_is_not_mislabeled) ... ok
+test_invalid_parity_or_coupling_is_rejected (test_physics.ParityAndMixingPhysicsTests.test_invalid_parity_or_coupling_is_rejected) ... ok
+test_known_half_coupling_solution (test_physics.ParityAndMixingPhysicsTests.test_known_half_coupling_solution) ... ok
+test_odd_dipole_needs_opposite_state_parity (test_physics.ParityAndMixingPhysicsTests.test_odd_dipole_needs_opposite_state_parity) ... ok
+test_reversal_of_odd_perturbation_preserves_strength (test_physics.ParityAndMixingPhysicsTests.test_reversal_of_odd_perturbation_preserves_strength) ... ok
+test_small_coupling_intensity_is_quadratic (test_physics.ParityAndMixingPhysicsTests.test_small_coupling_intensity_is_quadratic) ... ok
+test_uncoupled_limit_has_exact_dark_and_bright_states (test_physics.ParityAndMixingPhysicsTests.test_uncoupled_limit_has_exact_dark_and_bright_states) ... ok
+test_existing_output_is_untouched (test_run_support.EvidenceTests.test_existing_output_is_untouched) ... ok
+test_failed_mathematical_check_cannot_complete (test_run_support.EvidenceTests.test_failed_mathematical_check_cannot_complete) ... ok
+test_interrupt_is_preserved (test_run_support.EvidenceTests.test_interrupt_is_preserved) ... ok
+test_invalid_input_is_preserved_and_failed (test_run_support.EvidenceTests.test_invalid_input_is_preserved_and_failed) ... ok
+test_missing_figures_and_tables_cannot_complete (test_run_support.EvidenceTests.test_missing_figures_and_tables_cannot_complete) ... ok
+test_missing_input_has_typed_failure (test_run_support.EvidenceTests.test_missing_input_has_typed_failure) ... ok
+test_nested_nonfinite_numbers (test_run_support.EvidenceTests.test_nested_nonfinite_numbers) ... ok
+test_nonfinite_inputs_cannot_complete (test_run_support.EvidenceTests.test_nonfinite_inputs_cannot_complete) ... ok
+test_nonfinite_metrics_cannot_complete (test_run_support.EvidenceTests.test_nonfinite_metrics_cannot_complete) ... ok
+test_preserved_code_matches_recorded_hash (test_run_support.EvidenceTests.test_preserved_code_matches_recorded_hash) ... ok
+
+----------------------------------------------------------------------
+Ran 29 tests in 0.089s
+
+OK

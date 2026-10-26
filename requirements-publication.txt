@@ -1,0 +1,2 @@
+# Bundles Pandoc 3.9. PDF engine: separate Typst CLI 0.14.2.
+pypandoc_binary==1.17

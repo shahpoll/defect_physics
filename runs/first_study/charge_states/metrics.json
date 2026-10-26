@@ -1,0 +1,46 @@
+{
+  "exercise_type": "reconstruction_from_reported_values",
+  "energy_zero": "arbitrary common offset; no absolute formation energies",
+  "band_gap_eV": 5.34,
+  "reported_transition_levels_eV": [
+    1.43,
+    2.14
+  ],
+  "derived_intercepts_eV": {
+    "0": 0.0,
+    "-1": 1.43,
+    "-2": 3.5700000000000003
+  },
+  "stable_intervals": [
+    {
+      "charge": 0,
+      "fermi_min_eV": 0.0,
+      "fermi_max_eV": 1.43
+    },
+    {
+      "charge": -1,
+      "fermi_min_eV": 1.43,
+      "fermi_max_eV": 2.1400000000000006
+    },
+    {
+      "charge": -2,
+      "fermi_min_eV": 2.1400000000000006,
+      "fermi_max_eV": 5.34
+    }
+  ],
+  "nonadjacent_zero_minus_two_crossing_eV": 1.7850000000000001,
+  "nonadjacent_crossing_is_stability_boundary": false,
+  "minus_one_energy_advantage_at_nonadjacent_crossing_eV": 0.3550000000000002,
+  "max_crossing_residual_eV": 2.220446049250313e-16,
+  "max_slope_error": 0.0,
+  "offset_invariance_error_eV": 2.220446049250313e-16,
+  "grid_rows": 1003,
+  "checks": {
+    "adjacent_crossing_equalities": true,
+    "slopes_equal_charges": true,
+    "nonadjacent_crossing_is_inactive": true,
+    "common_offset_leaves_intervals_unchanged": true,
+    "known_stability_order": true
+  },
+  "all_checks_passed": true
+}

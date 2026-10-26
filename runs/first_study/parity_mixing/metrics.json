@@ -1,0 +1,54 @@
+{
+  "exercise_type": "parity_necessary_condition_and_dimensionless_teaching_model",
+  "selection_rule_scope": "Parity is necessary, not sufficient; full D3d, spin and polarization rules are not implemented",
+  "intensity_definition": "Normalized squared dipole strength with a fixed even ground state; frequency and population factors omitted",
+  "physical_strain_or_rate_prediction": false,
+  "coupling_range": [
+    -0.5,
+    0.5
+  ],
+  "grid_rows": 401,
+  "zero_coupling_borrowed_intensity": 0.0,
+  "edge_borrowed_intensity": 0.14644660940672624,
+  "max_analytic_intensity_error": 5.551115123125783e-17,
+  "max_coupling_reversal_error": 0.0,
+  "max_eigenvector_residual": 2.220446049250313e-16,
+  "max_orthogonality_error": 4.440892098500626e-16,
+  "max_bright_weight_sum_error": 4.440892098500626e-16,
+  "weak_limit": [
+    {
+      "lambda": 0.01,
+      "lower_borrowed_intensity": 9.997000999650125e-05,
+      "lambda_squared": 0.0001,
+      "intensity_over_lambda_squared": 0.9997000999650124,
+      "relative_departure_from_quadratic_limit": 0.000299900034987588
+    },
+    {
+      "lambda": 0.001,
+      "lower_borrowed_intensity": 9.999970000100002e-07,
+      "lambda_squared": 1e-06,
+      "intensity_over_lambda_squared": 0.9999970000100002,
+      "relative_departure_from_quadratic_limit": 2.9999899997523727e-06
+    },
+    {
+      "lambda": 0.0001,
+      "lower_borrowed_intensity": 9.999999700000013e-09,
+      "lambda_squared": 1e-08,
+      "intensity_over_lambda_squared": 0.9999999700000013,
+      "relative_departure_from_quadratic_limit": 2.9999998707452846e-08
+    }
+  ],
+  "checks": {
+    "same_parity_is_forbidden_for_odd_dipole": true,
+    "opposite_parity_passes_necessary_condition": true,
+    "zero_mixing_gives_zero_dark_intensity": true,
+    "eigenvectors_solve_hamiltonian": true,
+    "eigenvectors_are_orthonormal": true,
+    "eigenenergy_sum_matches_trace": true,
+    "total_normalized_bright_weight_is_conserved": true,
+    "numerical_intensity_matches_analytic_solution": true,
+    "intensity_is_even_in_coupling": true,
+    "quadratic_limit_is_approached": true
+  },
+  "all_checks_passed": true
+}

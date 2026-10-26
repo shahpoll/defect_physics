@@ -1,0 +1,250 @@
+{
+  "format_version": 1,
+  "view_kind": "curated_public_derivative_of_local_execution_evidence",
+  "generated_at_utc": "2026-10-26T19:59:16.018052+00:00",
+  "policy": {
+    "original_local_records_modified": false,
+    "redacted_fields": [
+      "command",
+      "working_directory",
+      "python_executable",
+      "input_requested",
+      "output_directory"
+    ],
+    "path_policy": "Paths in this view locate public files relative to the repository root; they do not restate original commands or machine paths.",
+    "hash_scope": "Public artifacts are verified against the original artifact hashes. Hashes of withheld originals are identity commitments; public readers cannot inspect those private bytes here.",
+    "claim_boundary": "These are educational reconstructions, a chosen teaching model, and table reanalysis. Completion is not independent ab initio validation or an independent attestation."
+  },
+  "study": {
+    "run_id": "first_study",
+    "status": "COMPLETE",
+    "started_at_utc": "2026-10-26T17:30:55.938280+00:00",
+    "finished_at_utc": "2026-10-26T17:30:57.036995+00:00",
+    "original_local_study_manifest_sha256": "ec0b9875d6aab02cea805e864cd77068ebbe90cba24ad8101c956112627ee088",
+    "original_study_manifest_available_publicly": false,
+    "matching_public_runner": {
+      "path": "run_study.py",
+      "sha256": "0fae0cb3c7015439746381a6396844add0bd9f2b7a114454f0b5fb2f1d06c34a"
+    }
+  },
+  "exercises": [
+    {
+      "exercise": "charge_states",
+      "status": "COMPLETE",
+      "started_at_utc": "2026-10-26T17:30:55.991003+00:00",
+      "finished_at_utc": "2026-10-26T17:30:56.258184+00:00",
+      "original_local_manifest_sha256": "3b17f45cbe92c758eb966df7ba6fc42d19a58260545fd757fa70c9ab09a10374",
+      "original_manifest_available_publicly": false,
+      "python_version": "3.13.5",
+      "platform": "macOS-26.3-arm64-arm-64bit-Mach-O",
+      "packages": {
+        "matplotlib": "3.10.7",
+        "numpy": "2.3.4"
+      },
+      "published_input_snapshot": {
+        "path": "runs/first_study/charge_states/provenance/input.json",
+        "sha256": "f790a47185adbe0e3e7e636501ba1a127564ba638cdca24e223a452d74a6ec72"
+      },
+      "matching_public_input_config": "data/charge_states.json",
+      "published_source_snapshots": [
+        {
+          "path": "runs/first_study/charge_states/provenance/code/__init__.py",
+          "sha256": "99905496cc922c1a537823263a3b9aeafd18c94f062e8b55d655e3a7ad86d90b"
+        },
+        {
+          "path": "runs/first_study/charge_states/provenance/code/charge_states.py",
+          "sha256": "792fb771331d321351d88fc77f13d15ea2fbb0943506a545799a198ada4337ea"
+        },
+        {
+          "path": "runs/first_study/charge_states/provenance/code/hyperfine.py",
+          "sha256": "a84a22af1ade556bea9b988800a128a78b0d0a0a674f8d42639f2225cb9eda6c"
+        },
+        {
+          "path": "runs/first_study/charge_states/provenance/code/parity_mixing.py",
+          "sha256": "cef5492f9a5f6535bd98ce0a49a2ca5aaa16d7475f4a5533f6a29bcdce636bce"
+        },
+        {
+          "path": "runs/first_study/charge_states/provenance/code/run_support.py",
+          "sha256": "79a73b46ce720f8f4e14acca2c7bfea676b68bd2b01dee6dc54979c70fa1b8f8"
+        }
+      ],
+      "published_artifacts_sha256": {
+        "runs/first_study/charge_states/metrics.json": "6955a7c4e23b88ccd9cacd9dfeb734cdfbe9e299a2aa653704b66721dd0e1814",
+        "runs/first_study/charge_states/provenance/code/__init__.py": "99905496cc922c1a537823263a3b9aeafd18c94f062e8b55d655e3a7ad86d90b",
+        "runs/first_study/charge_states/provenance/code/charge_states.py": "792fb771331d321351d88fc77f13d15ea2fbb0943506a545799a198ada4337ea",
+        "runs/first_study/charge_states/provenance/code/hyperfine.py": "a84a22af1ade556bea9b988800a128a78b0d0a0a674f8d42639f2225cb9eda6c",
+        "runs/first_study/charge_states/provenance/code/parity_mixing.py": "cef5492f9a5f6535bd98ce0a49a2ca5aaa16d7475f4a5533f6a29bcdce636bce",
+        "runs/first_study/charge_states/provenance/code/run_support.py": "79a73b46ce720f8f4e14acca2c7bfea676b68bd2b01dee6dc54979c70fa1b8f8",
+        "runs/first_study/charge_states/provenance/input.json": "f790a47185adbe0e3e7e636501ba1a127564ba638cdca24e223a452d74a6ec72",
+        "runs/first_study/charge_states/relative_formation_energies.csv": "86b40cbec18d37624e92a1ae72a79ad055f0da7181beba6c72065bcafb86f92e",
+        "runs/first_study/charge_states/relative_formation_energies.png": "18e53e5307a0528cad9b9ecae37ae2a2267412365101cdcb5af76b0236ce4d12",
+        "runs/first_study/charge_states/stable_charge_intervals.csv": "f57cfda4fd54edb29a95cbb2b0e0466bab14193a32938fc45e566661e5d17f15"
+      },
+      "withheld_artifacts": [
+        {
+          "relative_path": "runs/first_study/charge_states/execution.log",
+          "sha256": "633e37e1dd5f991603c2b4c28b6ec5bb221e7343ae05dff51e5e31bfeb55b750",
+          "reason": "Local-only artifact omitted from the curated public package; hash retained as an identity commitment, not a download link."
+        }
+      ]
+    },
+    {
+      "exercise": "parity_mixing",
+      "status": "COMPLETE",
+      "started_at_utc": "2026-10-26T17:30:56.346514+00:00",
+      "finished_at_utc": "2026-10-26T17:30:56.631811+00:00",
+      "original_local_manifest_sha256": "a601405fc79c2de3b7197d7dd2c2358f352135373726423a530907d5830ea736",
+      "original_manifest_available_publicly": false,
+      "python_version": "3.13.5",
+      "platform": "macOS-26.3-arm64-arm-64bit-Mach-O",
+      "packages": {
+        "matplotlib": "3.10.7",
+        "numpy": "2.3.4"
+      },
+      "published_input_snapshot": {
+        "path": "runs/first_study/parity_mixing/provenance/input.json",
+        "sha256": "584cc24cdce17e72eddbc6619045c328e3e5e2f3c015105a5e8c571831ed664b"
+      },
+      "matching_public_input_config": "data/parity_mixing.json",
+      "published_source_snapshots": [
+        {
+          "path": "runs/first_study/parity_mixing/provenance/code/__init__.py",
+          "sha256": "99905496cc922c1a537823263a3b9aeafd18c94f062e8b55d655e3a7ad86d90b"
+        },
+        {
+          "path": "runs/first_study/parity_mixing/provenance/code/charge_states.py",
+          "sha256": "792fb771331d321351d88fc77f13d15ea2fbb0943506a545799a198ada4337ea"
+        },
+        {
+          "path": "runs/first_study/parity_mixing/provenance/code/hyperfine.py",
+          "sha256": "a84a22af1ade556bea9b988800a128a78b0d0a0a674f8d42639f2225cb9eda6c"
+        },
+        {
+          "path": "runs/first_study/parity_mixing/provenance/code/parity_mixing.py",
+          "sha256": "cef5492f9a5f6535bd98ce0a49a2ca5aaa16d7475f4a5533f6a29bcdce636bce"
+        },
+        {
+          "path": "runs/first_study/parity_mixing/provenance/code/run_support.py",
+          "sha256": "79a73b46ce720f8f4e14acca2c7bfea676b68bd2b01dee6dc54979c70fa1b8f8"
+        }
+      ],
+      "published_artifacts_sha256": {
+        "runs/first_study/parity_mixing/dimensionless_mixing_sweep.csv": "4fa86f6f526ea8f1e09b6eae30d73c46f953adb71d44ce68112f2d7a79b2f602",
+        "runs/first_study/parity_mixing/dimensionless_parity_mixing.png": "e564651255f77b9211f722a50ea0bce93588ddd9781f5283829dc371c555ed93",
+        "runs/first_study/parity_mixing/metrics.json": "3e1c7b151b8a246af4599de379ea7ef8b13e285faf49d90d7f8730a552c114e4",
+        "runs/first_study/parity_mixing/parity_necessary_condition.csv": "ff011a6b5fbb99c7ad60b7f75e10e289cfb31d135e574f30d50f52b9687a59f2",
+        "runs/first_study/parity_mixing/provenance/code/__init__.py": "99905496cc922c1a537823263a3b9aeafd18c94f062e8b55d655e3a7ad86d90b",
+        "runs/first_study/parity_mixing/provenance/code/charge_states.py": "792fb771331d321351d88fc77f13d15ea2fbb0943506a545799a198ada4337ea",
+        "runs/first_study/parity_mixing/provenance/code/hyperfine.py": "a84a22af1ade556bea9b988800a128a78b0d0a0a674f8d42639f2225cb9eda6c",
+        "runs/first_study/parity_mixing/provenance/code/parity_mixing.py": "cef5492f9a5f6535bd98ce0a49a2ca5aaa16d7475f4a5533f6a29bcdce636bce",
+        "runs/first_study/parity_mixing/provenance/code/run_support.py": "79a73b46ce720f8f4e14acca2c7bfea676b68bd2b01dee6dc54979c70fa1b8f8",
+        "runs/first_study/parity_mixing/provenance/input.json": "584cc24cdce17e72eddbc6619045c328e3e5e2f3c015105a5e8c571831ed664b",
+        "runs/first_study/parity_mixing/weak_mixing_limit.csv": "42cbd9407188582ad0db0566ccdcfdd58e05bde4bca976183462bbbb19698b1c"
+      },
+      "withheld_artifacts": [
+        {
+          "relative_path": "runs/first_study/parity_mixing/execution.log",
+          "sha256": "498568d7ed434a66596c42dda616b0d19153902b236db5c08aa99a18315c0594",
+          "reason": "Local-only artifact omitted from the curated public package; hash retained as an identity commitment, not a download link."
+        }
+      ]
+    },
+    {
+      "exercise": "hyperfine",
+      "status": "COMPLETE",
+      "started_at_utc": "2026-10-26T17:30:56.717189+00:00",
+      "finished_at_utc": "2026-10-26T17:30:57.000802+00:00",
+      "original_local_manifest_sha256": "a29af034cfba18925e4762bbf058966f281d04c58ffca4ba3d4b81ab97bba2db",
+      "original_manifest_available_publicly": false,
+      "python_version": "3.13.5",
+      "platform": "macOS-26.3-arm64-arm-64bit-Mach-O",
+      "packages": {
+        "matplotlib": "3.10.7",
+        "numpy": "2.3.4"
+      },
+      "published_input_snapshot": {
+        "path": "runs/first_study/hyperfine/provenance/input.json",
+        "sha256": "f02cefe365e37e42fd480f3a1ff351543e61a003c645465c9c0f9d31c05db1d9"
+      },
+      "matching_public_input_config": "data/hyperfine.json",
+      "published_source_snapshots": [
+        {
+          "path": "runs/first_study/hyperfine/provenance/code/__init__.py",
+          "sha256": "99905496cc922c1a537823263a3b9aeafd18c94f062e8b55d655e3a7ad86d90b"
+        },
+        {
+          "path": "runs/first_study/hyperfine/provenance/code/charge_states.py",
+          "sha256": "792fb771331d321351d88fc77f13d15ea2fbb0943506a545799a198ada4337ea"
+        },
+        {
+          "path": "runs/first_study/hyperfine/provenance/code/hyperfine.py",
+          "sha256": "a84a22af1ade556bea9b988800a128a78b0d0a0a674f8d42639f2225cb9eda6c"
+        },
+        {
+          "path": "runs/first_study/hyperfine/provenance/code/parity_mixing.py",
+          "sha256": "cef5492f9a5f6535bd98ce0a49a2ca5aaa16d7475f4a5533f6a29bcdce636bce"
+        },
+        {
+          "path": "runs/first_study/hyperfine/provenance/code/run_support.py",
+          "sha256": "79a73b46ce720f8f4e14acca2c7bfea676b68bd2b01dee6dc54979c70fa1b8f8"
+        }
+      ],
+      "published_artifacts_sha256": {
+        "runs/first_study/hyperfine/hyperfine_comparison.png": "57c725a4ac6fa10959bd6b99a8a827ac107abfb93b7e12a6bf2231c09026c34c",
+        "runs/first_study/hyperfine/hyperfine_derived_quantities.csv": "5ccfc434f8987f220fbe3752e6f7744b1c1042af09ba7832cb4c87163bbd38ab",
+        "runs/first_study/hyperfine/illustrative_tensor_elements.csv": "1735c9b9857160e91ae91989ecbb4fff36297c7900bde0e6ffa1bbc449f797ed",
+        "runs/first_study/hyperfine/metrics.json": "c6ed0abef97b6a16a64fa92aa5959f5458a9a157097107431b0a9991310321be",
+        "runs/first_study/hyperfine/provenance/code/__init__.py": "99905496cc922c1a537823263a3b9aeafd18c94f062e8b55d655e3a7ad86d90b",
+        "runs/first_study/hyperfine/provenance/code/charge_states.py": "792fb771331d321351d88fc77f13d15ea2fbb0943506a545799a198ada4337ea",
+        "runs/first_study/hyperfine/provenance/code/hyperfine.py": "a84a22af1ade556bea9b988800a128a78b0d0a0a674f8d42639f2225cb9eda6c",
+        "runs/first_study/hyperfine/provenance/code/parity_mixing.py": "cef5492f9a5f6535bd98ce0a49a2ca5aaa16d7475f4a5533f6a29bcdce636bce",
+        "runs/first_study/hyperfine/provenance/code/run_support.py": "79a73b46ce720f8f4e14acca2c7bfea676b68bd2b01dee6dc54979c70fa1b8f8",
+        "runs/first_study/hyperfine/provenance/input.json": "f02cefe365e37e42fd480f3a1ff351543e61a003c645465c9c0f9d31c05db1d9"
+      },
+      "withheld_artifacts": [
+        {
+          "relative_path": "runs/first_study/hyperfine/execution.log",
+          "sha256": "f5e2ca27c92e7157cd99d8a8db72da276f7a36171269d8c0cbc78ec72a86ecd0",
+          "reason": "Local-only artifact omitted from the curated public package; hash retained as an identity commitment, not a download link."
+        }
+      ]
+    }
+  ],
+  "published_files_sha256": {
+    "data/charge_states.json": "f790a47185adbe0e3e7e636501ba1a127564ba638cdca24e223a452d74a6ec72",
+    "data/hyperfine.json": "f02cefe365e37e42fd480f3a1ff351543e61a003c645465c9c0f9d31c05db1d9",
+    "data/parity_mixing.json": "584cc24cdce17e72eddbc6619045c328e3e5e2f3c015105a5e8c571831ed664b",
+    "run_study.py": "0fae0cb3c7015439746381a6396844add0bd9f2b7a114454f0b5fb2f1d06c34a",
+    "runs/first_study/charge_states/metrics.json": "6955a7c4e23b88ccd9cacd9dfeb734cdfbe9e299a2aa653704b66721dd0e1814",
+    "runs/first_study/charge_states/provenance/code/__init__.py": "99905496cc922c1a537823263a3b9aeafd18c94f062e8b55d655e3a7ad86d90b",
+    "runs/first_study/charge_states/provenance/code/charge_states.py": "792fb771331d321351d88fc77f13d15ea2fbb0943506a545799a198ada4337ea",
+    "runs/first_study/charge_states/provenance/code/hyperfine.py": "a84a22af1ade556bea9b988800a128a78b0d0a0a674f8d42639f2225cb9eda6c",
+    "runs/first_study/charge_states/provenance/code/parity_mixing.py": "cef5492f9a5f6535bd98ce0a49a2ca5aaa16d7475f4a5533f6a29bcdce636bce",
+    "runs/first_study/charge_states/provenance/code/run_support.py": "79a73b46ce720f8f4e14acca2c7bfea676b68bd2b01dee6dc54979c70fa1b8f8",
+    "runs/first_study/charge_states/provenance/input.json": "f790a47185adbe0e3e7e636501ba1a127564ba638cdca24e223a452d74a6ec72",
+    "runs/first_study/charge_states/relative_formation_energies.csv": "86b40cbec18d37624e92a1ae72a79ad055f0da7181beba6c72065bcafb86f92e",
+    "runs/first_study/charge_states/relative_formation_energies.png": "18e53e5307a0528cad9b9ecae37ae2a2267412365101cdcb5af76b0236ce4d12",
+    "runs/first_study/charge_states/stable_charge_intervals.csv": "f57cfda4fd54edb29a95cbb2b0e0466bab14193a32938fc45e566661e5d17f15",
+    "runs/first_study/hyperfine/hyperfine_comparison.png": "57c725a4ac6fa10959bd6b99a8a827ac107abfb93b7e12a6bf2231c09026c34c",
+    "runs/first_study/hyperfine/hyperfine_derived_quantities.csv": "5ccfc434f8987f220fbe3752e6f7744b1c1042af09ba7832cb4c87163bbd38ab",
+    "runs/first_study/hyperfine/illustrative_tensor_elements.csv": "1735c9b9857160e91ae91989ecbb4fff36297c7900bde0e6ffa1bbc449f797ed",
+    "runs/first_study/hyperfine/metrics.json": "c6ed0abef97b6a16a64fa92aa5959f5458a9a157097107431b0a9991310321be",
+    "runs/first_study/hyperfine/provenance/code/__init__.py": "99905496cc922c1a537823263a3b9aeafd18c94f062e8b55d655e3a7ad86d90b",
+    "runs/first_study/hyperfine/provenance/code/charge_states.py": "792fb771331d321351d88fc77f13d15ea2fbb0943506a545799a198ada4337ea",
+    "runs/first_study/hyperfine/provenance/code/hyperfine.py": "a84a22af1ade556bea9b988800a128a78b0d0a0a674f8d42639f2225cb9eda6c",
+    "runs/first_study/hyperfine/provenance/code/parity_mixing.py": "cef5492f9a5f6535bd98ce0a49a2ca5aaa16d7475f4a5533f6a29bcdce636bce",
+    "runs/first_study/hyperfine/provenance/code/run_support.py": "79a73b46ce720f8f4e14acca2c7bfea676b68bd2b01dee6dc54979c70fa1b8f8",
+    "runs/first_study/hyperfine/provenance/input.json": "f02cefe365e37e42fd480f3a1ff351543e61a003c645465c9c0f9d31c05db1d9",
+    "runs/first_study/parity_mixing/dimensionless_mixing_sweep.csv": "4fa86f6f526ea8f1e09b6eae30d73c46f953adb71d44ce68112f2d7a79b2f602",
+    "runs/first_study/parity_mixing/dimensionless_parity_mixing.png": "e564651255f77b9211f722a50ea0bce93588ddd9781f5283829dc371c555ed93",
+    "runs/first_study/parity_mixing/metrics.json": "3e1c7b151b8a246af4599de379ea7ef8b13e285faf49d90d7f8730a552c114e4",
+    "runs/first_study/parity_mixing/parity_necessary_condition.csv": "ff011a6b5fbb99c7ad60b7f75e10e289cfb31d135e574f30d50f52b9687a59f2",
+    "runs/first_study/parity_mixing/provenance/code/__init__.py": "99905496cc922c1a537823263a3b9aeafd18c94f062e8b55d655e3a7ad86d90b",
+    "runs/first_study/parity_mixing/provenance/code/charge_states.py": "792fb771331d321351d88fc77f13d15ea2fbb0943506a545799a198ada4337ea",
+    "runs/first_study/parity_mixing/provenance/code/hyperfine.py": "a84a22af1ade556bea9b988800a128a78b0d0a0a674f8d42639f2225cb9eda6c",
+    "runs/first_study/parity_mixing/provenance/code/parity_mixing.py": "cef5492f9a5f6535bd98ce0a49a2ca5aaa16d7475f4a5533f6a29bcdce636bce",
+    "runs/first_study/parity_mixing/provenance/code/run_support.py": "79a73b46ce720f8f4e14acca2c7bfea676b68bd2b01dee6dc54979c70fa1b8f8",
+    "runs/first_study/parity_mixing/provenance/input.json": "584cc24cdce17e72eddbc6619045c328e3e5e2f3c015105a5e8c571831ed664b",
+    "runs/first_study/parity_mixing/weak_mixing_limit.csv": "42cbd9407188582ad0db0566ccdcfdd58e05bde4bca976183462bbbb19698b1c"
+  }
+}

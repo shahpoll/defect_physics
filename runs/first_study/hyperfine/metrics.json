@@ -1,0 +1,145 @@
+{
+  "exercise_type": "reanalysis_of_reported_hyperfine_tensors",
+  "coordinate_assumption": "z along defect [111]; illustrative phi=0, not a measured azimuth",
+  "isolated_core_polarization_effect_identified": false,
+  "comparisons": {
+    "13C": {
+      "experiment": {
+        "a_parallel_MHz": 66.2,
+        "a_perp_MHz": 30.2,
+        "a_iso_MHz": 42.199999999999996,
+        "anisotropic_frobenius_norm_MHz": 29.393876913398138,
+        "principal_values_MHz": [
+          30.199999999999992,
+          30.200000000000003,
+          66.2
+        ],
+        "parallel_signed_error_MHz": 0.0,
+        "perp_signed_error_MHz": 0.0,
+        "iso_signed_error_MHz": 0.0,
+        "theta_signed_error_deg": 0.0,
+        "parallel_relative_error_percent": 0.0,
+        "perp_relative_error_percent": 0.0,
+        "iso_relative_error_percent": 0.0,
+        "principal_value_mae_MHz": 0.0
+      },
+      "lda_no_core": {
+        "a_parallel_MHz": 51.0,
+        "a_perp_MHz": 12.0,
+        "a_iso_MHz": 25.0,
+        "anisotropic_frobenius_norm_MHz": 31.843366656181317,
+        "principal_values_MHz": [
+          12.0,
+          12.0,
+          51.0
+        ],
+        "parallel_signed_error_MHz": -15.200000000000003,
+        "perp_signed_error_MHz": -18.2,
+        "iso_signed_error_MHz": -17.199999999999996,
+        "theta_signed_error_deg": -2.0,
+        "parallel_relative_error_percent": -22.960725075528703,
+        "perp_relative_error_percent": -60.264900662251655,
+        "iso_relative_error_percent": -40.75829383886255,
+        "principal_value_mae_MHz": 17.2
+      },
+      "hse06_core": {
+        "a_parallel_MHz": 68.0,
+        "a_perp_MHz": 28.0,
+        "a_iso_MHz": 41.333333333333336,
+        "anisotropic_frobenius_norm_MHz": 32.659863237109036,
+        "principal_values_MHz": [
+          27.99999999999999,
+          28.0,
+          68.0
+        ],
+        "parallel_signed_error_MHz": 1.7999999999999972,
+        "perp_signed_error_MHz": -2.1999999999999993,
+        "iso_signed_error_MHz": -0.86666666666666,
+        "theta_signed_error_deg": -0.6999999999999957,
+        "parallel_relative_error_percent": 2.7190332326283944,
+        "perp_relative_error_percent": -7.284768211920528,
+        "iso_relative_error_percent": -2.053712480252749,
+        "principal_value_mae_MHz": 2.066666666666665
+      }
+    },
+    "29Si": {
+      "experiment": {
+        "a_parallel_MHz": 76.3,
+        "a_perp_MHz": 78.9,
+        "a_iso_MHz": 78.03333333333335,
+        "anisotropic_frobenius_norm_MHz": 2.1228911104120947,
+        "principal_values_MHz": [
+          76.3,
+          78.9,
+          78.9
+        ],
+        "parallel_signed_error_MHz": 0.0,
+        "perp_signed_error_MHz": 0.0,
+        "iso_signed_error_MHz": 0.0,
+        "theta_signed_error_deg": 0.0,
+        "parallel_relative_error_percent": 0.0,
+        "perp_relative_error_percent": 0.0,
+        "iso_relative_error_percent": 0.0,
+        "principal_value_mae_MHz": 0.0
+      },
+      "lda_no_core": {
+        "a_parallel_MHz": 78.0,
+        "a_perp_MHz": 82.0,
+        "a_iso_MHz": 80.66666666666667,
+        "anisotropic_frobenius_norm_MHz": 3.265986323710904,
+        "principal_values_MHz": [
+          78.0,
+          82.0,
+          82.0
+        ],
+        "parallel_signed_error_MHz": 1.7000000000000028,
+        "perp_signed_error_MHz": 3.0999999999999943,
+        "iso_signed_error_MHz": 2.6333333333333258,
+        "theta_signed_error_deg": 0.0,
+        "parallel_relative_error_percent": 2.2280471821756263,
+        "perp_relative_error_percent": 3.9290240811153283,
+        "iso_relative_error_percent": 3.374626228107636,
+        "principal_value_mae_MHz": 2.6333333333333306
+      },
+      "hse06_core": {
+        "a_parallel_MHz": 92.0,
+        "a_perp_MHz": 97.0,
+        "a_iso_MHz": 95.33333333333333,
+        "anisotropic_frobenius_norm_MHz": 4.0824829046386295,
+        "principal_values_MHz": [
+          92.0,
+          97.0,
+          97.0
+        ],
+        "parallel_signed_error_MHz": 15.700000000000003,
+        "perp_signed_error_MHz": 18.099999999999994,
+        "iso_signed_error_MHz": 17.299999999999983,
+        "theta_signed_error_deg": 0.0,
+        "parallel_relative_error_percent": 20.576671035386635,
+        "perp_relative_error_percent": 22.940430925221794,
+        "iso_relative_error_percent": 22.170012815036284,
+        "principal_value_mae_MHz": 17.299999999999997
+      }
+    }
+  },
+  "closer_method_by_principal_value_mae": {
+    "13C": "hse06_core",
+    "29Si": "lda_no_core"
+  },
+  "mae_definition": "(|parallel error| + 2 |perpendicular error|) / 3, accounting for axial eigenvalue multiplicity",
+  "max_principal_value_error_MHz": 1.0658141036401503e-14,
+  "max_scalar_average_error_MHz": 0.0,
+  "max_anisotropic_trace_MHz": 2.842170943040401e-14,
+  "max_rotation_eigenvalue_error_MHz": 2.1316282072803006e-14,
+  "max_rotation_isotropic_error_MHz": 0.0,
+  "max_rotation_anisotropic_norm_error_MHz": 5.773159728050814e-15,
+  "checks": {
+    "principal_values_recovered": true,
+    "isotropic_scalar_matches_principal_value_average": true,
+    "anisotropic_part_is_traceless": true,
+    "rotation_preserves_principal_values": true,
+    "rotation_preserves_isotropic_scalar": true,
+    "rotation_preserves_anisotropic_norm": true
+  },
+  "all_checks_passed": true
+}

@@ -1,0 +1,22 @@
+{
+  "title": "Studying the silicon-vacancy center",
+  "subtitle": "Gali and Maze (2013), with three small Python exercises",
+  "description": "A working physics notebook: reading notes, explicit assumptions, and reproducible preliminary calculations for a supervisor discussion.",
+  "kicker": "Defect physics / Study notebook",
+  "source_base_url": "https://github.com/shahpoll/defect_physics/blob/main/",
+  "sections": [
+    {"id": "study-notes", "title": "Reading notes", "path": "Rudimentary_Notes_Gali_n_Maze.md", "optional": false},
+    {"id": "charge-states", "title": "Exercise 1 · Charge states", "path": "reports/charge_states.md", "optional": false},
+    {"id": "parity-mixing", "title": "Exercise 2 · Parity and mixing", "path": "reports/parity_mixing.md", "optional": false},
+    {"id": "hyperfine", "title": "Exercise 3 · Hyperfine comparison", "path": "reports/hyperfine.md", "optional": false},
+    {"id": "glossary", "title": "Working glossary", "path": "notes/glossary.md", "optional": true},
+    {"id": "questions", "title": "Questions for discussion", "path": "notes/questions.md", "optional": true},
+    {"id": "reading-map", "title": "Reading map", "path": "notes/reading_map.md", "optional": true},
+    {"id": "later-reading", "title": "Selected later reading", "path": "reports/literature_followup.md", "optional": true},
+    {"id": "sources", "title": "Sources and versions", "path": "references/sources.md", "optional": true}
+  ],
+  "pdfs": {
+    "study-notes": {"subtitle": "Reading notes and working glossary", "sections": ["study-notes", "glossary"]},
+    "study-pack": {"subtitle": "Reading notes, three exercises, and discussion material", "sections": ["study-notes", "charge-states", "parity-mixing", "hyperfine", "glossary", "questions", "sources"]}
+  }
+}

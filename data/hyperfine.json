@@ -1,0 +1,25 @@
+{
+  "experiment": "hyperfine",
+  "source": {
+    "authors": "Adam Gali and Jeronimo R. Maze",
+    "doi": "10.1103/PhysRevB.88.235205",
+    "full_text_url": "https://arxiv.org/pdf/1310.2137v2",
+    "version": "arXiv v2, 14 October 2013",
+    "locators": ["Section II, Eqs. (1)-(2)", "Section III D, Table I"],
+    "value_status": "All principal constants and theta values are transcribed from Table I, not computed from electron spin density here. Table experimental values originate in the paper's Ref. 15; LDA values originate in its Ref. 35."
+  },
+  "coordinate_convention": {
+    "z_axis": "The defect [111] symmetry axis is the coordinate z direction.",
+    "phi_deg": 0.0,
+    "azimuth_status": "The axial tensor is placed in the x-z plane for illustration only; Table I gives theta but does not determine this azimuth."
+  },
+  "rows": [
+    {"isotope": "13C", "method": "experiment", "a_parallel_MHz": 66.2, "a_perp_MHz": 30.2, "theta_deg": 35.3},
+    {"isotope": "13C", "method": "lda_no_core", "a_parallel_MHz": 51.0, "a_perp_MHz": 12.0, "theta_deg": 33.3},
+    {"isotope": "13C", "method": "hse06_core", "a_parallel_MHz": 68.0, "a_perp_MHz": 28.0, "theta_deg": 34.6},
+    {"isotope": "29Si", "method": "experiment", "a_parallel_MHz": 76.3, "a_perp_MHz": 78.9, "theta_deg": 0.0},
+    {"isotope": "29Si", "method": "lda_no_core", "a_parallel_MHz": 78.0, "a_perp_MHz": 82.0, "theta_deg": 0.0},
+    {"isotope": "29Si", "method": "hse06_core", "a_parallel_MHz": 92.0, "a_perp_MHz": 97.0, "theta_deg": 0.0}
+  ],
+  "interpretation": "Reanalysis of reported axial tensors, not an ab initio hyperfine calculation or an EPR spectrum simulation. Functional, supercell size and core treatment all change between the theoretical columns, so their difference cannot isolate a core-polarization correction. Reported table signs are retained without additional sign inference."
+}

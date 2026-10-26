@@ -1,0 +1,23 @@
+{
+  "checked_at_utc": "2026-10-26T20:10:47.694030+00:00",
+  "status": "PASS",
+  "automated_tests": 51,
+  "public_reference_files_verified": 35,
+  "three_exercises_reexecuted_successfully": true,
+  "pdf": {
+    "paper": "A4",
+    "body_font_pt": 12,
+    "notes_pages": 10,
+    "study_pack_pages": 21,
+    "out_of_page_characters": 0,
+    "visual_review": "All-page contact sheets and selected equation, glossary, and question pages inspected after print-layout revision."
+  },
+  "website": {
+    "local_browser_review": true,
+    "math_rendering": "native MathML, checked in browser",
+    "source_figures": 3,
+    "internal_links_and_assets_validated": true,
+    "generated_output_tracked": false
+  },
+  "scope": "Educational reconstructions and teaching model; publication checks do not establish new DFT or experimental validation."
+}
