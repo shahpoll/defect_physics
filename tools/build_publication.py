@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the reading site and PDFs from canonical Markdown, without Node or network."""
+"""Build the reading site and PDFs, with optional HTML-only reading drafts."""
 from __future__ import annotations
 
 import argparse
@@ -140,8 +140,15 @@ class Publication:
         self.config_path = self.root / "publication/content.json"
         self.config = json.loads(self.config_path.read_text())
         self.sections = self.config["sections"]
+        self.site_sections = [s for s in self.sections if s.get("site_enabled", True)]
         self.by_id = {section["id"]: section for section in self.sections}
         self.by_path = {self.local_path(section["path"]): section for section in self.sections}
+        # Site drafts retain the canonical Markdown's relative-link base. Print
+        # always reads section.path; an HTML revision cannot replace print text.
+        self.site_paths = {
+            section["id"]: self.local_path(section.get("site_path", section["path"]))
+            for section in self.sections
+        }
         if len(self.by_id) != len(self.sections) or len(self.by_path) != len(self.sections):
             raise BuildError("Section IDs and source paths must be unique.")
         if not re.fullmatch(r"https://github\.com/[^/]+/[^/]+/blob/[^/]+/", self.config["source_base_url"]):
@@ -152,7 +159,7 @@ class Publication:
             self.root / "publication/study.typ", self.root / "tools/build_publication.py",
         }
         self.images: set[Path] = set()
-        for path in self.by_path:
+        for path in set(self.by_path) | set(self.site_paths.values()):
             self.document(path)
         self._validate_inputs()
 
@@ -170,7 +177,12 @@ class Publication:
             self.documents[path] = Document(path, self.pandoc)
         return self.documents[path]
 
-    def _local_target(self, target: str, source: Path) -> tuple[Path, str] | None:
+    def section_source(self, section_id: str, mode: str) -> Path:
+        if mode == "site":
+            return self.site_paths[section_id]
+        return self.local_path(self.by_id[section_id]["path"])
+
+    def _local_target(self, target: str, source: Path, mode: str = "pdf") -> tuple[Path, str] | None:
         url = urlsplit(target)
         if url.scheme or url.netloc:
             if url.scheme == "file":
@@ -178,26 +190,29 @@ class Publication:
             return None
         path = self.local_path(url.path, source) if url.path else source
         fragment = unquote(url.fragment)
-        if fragment and path.suffix.lower() == ".md" and fragment not in self.document(path).anchors:
+        anchor_source = self.section_source(self.by_path[path]["id"], mode) if path in self.by_path else path
+        if fragment and path.suffix.lower() == ".md" and fragment not in self.document(anchor_source).anchors:
             raise BuildError(f"Missing Markdown anchor #{fragment} in {path.relative_to(self.root)}")
         return path, fragment
 
     def _validate_inputs(self):
-        for source in self.by_path:
-            self.input_files.add(source)
-            for node in walk(self.document(source).ast):
-                if node.get("t") not in ("Link", "Image"):
-                    continue
-                target = node["c"][2][0]
-                resolved = self._local_target(target, source)
-                if node["t"] == "Image":
-                    if resolved is None:
-                        raise BuildError("Publication figures must be local canonical assets for offline reading.")
-                    path, fragment = resolved
-                    if fragment or path.suffix.lower() not in {".png", ".jpg", ".jpeg", ".svg"}:
-                        raise BuildError(f"Unsupported figure target: {target}")
-                    self.images.add(path)
-                    self.input_files.add(path)
+        for mode in ("pdf", "site"):
+            for source, section in self.by_path.items():
+                draft = self.section_source(section["id"], mode)
+                self.input_files.add(draft)
+                for node in walk(self.document(draft).ast):
+                    if node.get("t") not in ("Link", "Image"):
+                        continue
+                    target = node["c"][2][0]
+                    resolved = self._local_target(target, source, mode)
+                    if node["t"] == "Image":
+                        if resolved is None:
+                            raise BuildError("Publication figures must be local canonical assets for offline reading.")
+                        path, fragment = resolved
+                        if fragment or path.suffix.lower() not in {".png", ".jpg", ".jpeg", ".svg"}:
+                            raise BuildError(f"Unsupported figure target: {target}")
+                        self.images.add(path)
+                        self.input_files.add(path)
 
     def fingerprint(self) -> tuple[dict, str]:
         inputs = {str(path.relative_to(self.root)): sha256(path) for path in sorted(self.input_files)}
@@ -214,7 +229,7 @@ class Publication:
     def section_ast(self, section_id: str, included: set[str], mode: str, *, typst_dir: Path | None = None) -> dict:
         section = self.by_id[section_id]
         source = self.local_path(section["path"])
-        ast = copy.deepcopy(self.document(source).ast)
+        ast = copy.deepcopy(self.document(self.section_source(section_id, mode)).ast)
         first_heading = True
         for node in walk(ast):
             if node.get("t") == "Header":
@@ -226,7 +241,7 @@ class Publication:
                     first_heading = False
             if node.get("t") not in ("Link", "Image"):
                 continue
-            resolved = self._local_target(node["c"][2][0], source)
+            resolved = self._local_target(node["c"][2][0], source, mode)
             if resolved is None:
                 continue
             path, fragment = resolved
@@ -237,7 +252,8 @@ class Publication:
                     target = Path(os.path.relpath(path, typst_dir)).as_posix()
             elif path in self.by_path and self.by_path[path]["id"] in included:
                 destination_id = self.by_path[path]["id"]
-                first_id = next((n["c"][1][0] for n in walk(self.document(path).ast) if n.get("t") == "Header"), "")
+                destination_source = self.section_source(destination_id, mode)
+                first_id = next((n["c"][1][0] for n in walk(self.document(destination_source).ast) if n.get("t") == "Header"), "")
                 target = "#" + (f"{destination_id}--{fragment}" if fragment and fragment != first_id else destination_id)
             else:
                 target = self.github_url(path, fragment)
@@ -279,9 +295,9 @@ class Publication:
                 destination = stage / "assets/figures" / path.relative_to(self.root)
                 destination.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copyfile(path, destination)
-            included = set(self.by_id)
+            included = {s["id"] for s in self.site_sections}
             rendered = []
-            for section in self.sections:
+            for section in self.site_sections:
                 ast = self.section_ast(section["id"], included, "site")
                 # The wrapper owns each section's anchor. Avoid duplicate IDs.
                 first = next((n for n in walk(ast) if n.get("t") == "Header"), None)
@@ -300,7 +316,9 @@ class Publication:
             download_links = []
             pdf_dir = build / "pdf"
             pdf_manifest = pdf_dir / "publication-manifest.json"
-            if pdf_manifest.exists() and json.loads(pdf_manifest.read_text()).get("input_digest") == self.fingerprint()[1]:
+            if (self.config.get("site_downloads_enabled", True)
+                    and pdf_manifest.exists()
+                    and json.loads(pdf_manifest.read_text()).get("input_digest") == self.fingerprint()[1]):
                 (stage / "downloads").mkdir()
                 for name, label in (("study-notes", "Notes PDF"), ("study-pack", "Full study pack PDF")):
                     pdf = pdf_dir / f"{name}.pdf"
@@ -308,7 +326,7 @@ class Publication:
                         raise BuildError("PDF manifest exists but a PDF is missing; rebuild --format all.")
                     shutil.copyfile(pdf, stage / "downloads" / pdf.name)
                     download_links.append(f'<a class="download-link" href="downloads/{pdf.name}">{label}</a>')
-            navigation = "<ul>" + "".join(f'<li><a href="#{html.escape(s["id"])}">{html.escape(s["title"])}</a></li>' for s in self.sections) + "</ul>"
+            navigation = "<ul>" + "".join(f'<li><a href="#{html.escape(s["id"])}">{html.escape(s["title"])}</a></li>' for s in self.site_sections) + "</ul>"
             repository = self.config["source_base_url"].split("/blob/", 1)[0]
             substitutions = {key: html.escape(self.config[key]) for key in ("title", "subtitle", "description", "kicker")}
             substitutions.update(body="\n".join(rendered), navigation=navigation, downloads="".join(download_links), repository_url=html.escape(repository))

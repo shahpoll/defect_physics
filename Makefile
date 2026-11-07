@@ -9,6 +9,7 @@ setup:
 test:
 	PYTHONPATH=src $(PYTHON) -m unittest discover -s tests -v
 	$(PYTHON) tools/check_reference.py
+	$(PYTHON) tools/check_public_text.py
 
 pdf:
 	$(PYTHON) tools/build_publication.py --format pdf

@@ -1,85 +1,81 @@
-# Defect physics: an open study notebook
+# Defect physics: working notes
 
 [![Build and publish](https://github.com/shahpoll/defect_physics/actions/workflows/publication.yml/badge.svg)](https://github.com/shahpoll/defect_physics/actions/workflows/publication.yml)
 
-Paper-reading notes, questions, and small reproducible calculations while learning point-defect physics. The first study is **Gali and Maze (2013), on the silicon-vacancy center in diamond**. This is an evolving student notebook for discussion and correction, rather than a finished paper or a claim of new first-principles results.
+Reading notes, questions, and three small Python exercises while learning point-defect physics. First paper: **Gali and Maze (2013), silicon-vacancy center in diamond**. Work in progress; present understanding, assumptions, and gaps kept visible.
 
-**[Read the scrolling website](https://shahpoll.github.io/defect_physics/)** · **[Printable notes](https://shahpoll.github.io/defect_physics/downloads/study-notes.pdf)** · **[Full printable study pack](https://shahpoll.github.io/defect_physics/downloads/study-pack.pdf)**
+**[Open the reading website](https://shahpoll.github.io/defect_physics/)**
 
-## Start here
+## Reading
 
-- [Main reading notes](Rudimentary_Notes_Gali_n_Maze.md): the paper's question, background physics, evidence, and limitations, in a working-study voice.
-- [Supervisor brief](reports/supervisor_brief.md): a short entry point to the study and its results.
-- [Glossary](notes/glossary.md), [reading map](notes/reading_map.md), and [questions](notes/questions.md): what I need to understand next.
-- [Sources and versions](references/sources.md), [bibliography](references/bibliography.bib), and [selected follow-up reading](reports/literature_followup.md).
+- [Reading notes](https://shahpoll.github.io/defect_physics/#study-notes)
+- [Exercise 1: charge states](https://shahpoll.github.io/defect_physics/#charge-states)
+- [Exercise 2: parity and mixing](https://shahpoll.github.io/defect_physics/#parity-mixing)
+- [Exercise 3: hyperfine comparison](https://shahpoll.github.io/defect_physics/#hyperfine)
+- [Working glossary](https://shahpoll.github.io/defect_physics/#glossary)
+- [Questions for discussion](https://shahpoll.github.io/defect_physics/#questions)
 
-The source is [Gali and Maze, Physical Review B 88, 235205 (2013)](https://doi.org/10.1103/PhysRevB.88.235205). Page references use the [eight-page arXiv v2 manuscript](https://arxiv.org/pdf/1310.2137v2), not the journal layout. Draft first-person wording is a study aid, not evidence that every derivation has been mastered.
+Source: [Gali and Maze, Physical Review B 88, 235205 (2013)](https://doi.org/10.1103/PhysRevB.88.235205). Page references use the [8-page arXiv v2 manuscript](https://arxiv.org/pdf/1310.2137v2).
 
-## What has been calculated
+## Calculations already in the notebook
 
-| Exercise | Purpose | Boundary |
+| Exercise | Calculation | Limit |
 |---|---|---|
-| [Charge-state stability](reports/charge_states.md) | Reconstruct relative formation-energy lines and their lower envelope | Uses published crossings; no new DFT or absolute formation energies |
-| [Parity and mixing](reports/parity_mixing.md) | Test a symmetry condition and diagonalize a small teaching Hamiltonian | Dimensionless model; no physical strain, rate, or lifetime prediction |
-| [Hyperfine comparison](reports/hyperfine.md) | Decompose reported tensors and quantify agreement with experiment | Reanalysis of Table I; no new spin-density calculation |
+| Charge states | Relative formation-energy lines and lower envelope | Published crossings; arbitrary common offset; no new DFT or absolute formation energies |
+| Parity and mixing | Parity test and two-state diagonalization | Dimensionless teaching model; no physical strain coefficient, rate, or lifetime |
+| Hyperfine | Table I tensor decomposition and component comparison | Published constants; no new spin-density or EPR calculation |
 
-The carbon/silicon comparison retains a useful mismatch: the newer theoretical column is closer for carbon but farther from experiment for silicon. The reports make both visible. Scientific claims, author proposals, explanatory models, and student questions are distinguishable.
+- Carbon: newer theory column closer to experiment. Silicon: worse agreement. Both retained.
+- Reference figures, CSVs, metrics, and exact input/code snapshots: [runs/first_study](runs/first_study/).
+- Evidence hashes and local-record omissions: [public provenance](references/public_provenance.md).
+- Original mathematical checks: [test record](reports/verification.txt). Current checks run in GitHub Actions.
 
-Selected results live in `runs/first_study/`: figures, CSV tables, metrics, and exact input/code snapshots. [Public provenance](references/public_provenance.md) records their hashes and explains which local details were withheld. [The original test record](reports/verification.txt) documents the first study; subsequent checks run in GitHub Actions.
+## Edit and preview HTML
 
-## Reproduce the calculations
-
-Use **Python 3.13**. Create an isolated environment and install the pinned dependencies:
+Use **Python 3.13** with the pinned requirements:
 
 ```sh
 python3.13 -m venv .venv
 .venv/bin/python -m pip install -r requirements.txt -r requirements-publication.txt
 make test
+make preview
+```
+
+Open <http://localhost:8000>. Stop with Control-C. After editing, rebuild with `make site` and reload; the preview does not watch files.
+
+- Edit the six Markdown drafts in [publication/web-notes](publication/web-notes/).
+- Section selection: [publication/content.json](publication/content.json), using `site_path`.
+- Layout: [publication/site.html](publication/site.html) and [publication/study.css](publication/study.css).
+- Links and figures in each draft resolve from its original `path` in the config. Read the result in the website; GitHub's Markdown view uses a different relative-link base.
+- Figures come from the existing Python reference outputs. No duplicate figure source.
+- Native MathML; local styles; no external math renderer or web fonts.
+
+The earlier root/report Markdown sources remain separate from these HTML drafts. Three supporting HTML drafts are archived locally and excluded from Git. They are omitted from the website.
+
+## Reproduce the calculations
+
+After setup, create a new study run:
+
+```sh
 .venv/bin/python run_study.py
 ```
 
-The last command creates a new dated run folder. Existing run folders are refused, preserving previous attempts. For a single exercise:
+Existing output folders are refused. To run one exercise:
 
 ```sh
 PYTHONPATH=src .venv/bin/python -m siv_study.charge_states --input data/charge_states.json --output runs/my_charge_trial
 ```
 
-Replace `charge_states` and its input name with `parity_mixing` or `hyperfine` for the others. See [the run policy](runs/README.md). Testing new inputs does not silently replace the published baseline; update the relevant report and select a new dated reference deliberately.
+Replace `charge_states` and its input with `parity_mixing` or `hyperfine` as needed. See [run policy](runs/README.md). New trials do not replace the selected reference evidence.
 
-## Print after a reading session
+## Publication and printing
 
-Install the **Typst CLI 0.14.2** once if unavailable. It is already installed on the study's Mac. Pandoc is included in the publication dependency above; no separate Pandoc install is needed.
-
-After editing the Markdown:
-
-```sh
-make pdf
-```
-
-Open `build/pdf/study-notes.pdf` for the notes and glossary, or `build/pdf/study-pack.pdf` for the notes, exercise reports, and supporting material. Both are A4 documents built from the Markdown, with typeset equations and the existing Python figures. There is no separate PDF source to edit.
-
-Build the website and PDFs together:
-
-```sh
-make all
-```
-
-Preview the website:
-
-```sh
-make preview
-```
-
-Visit `http://localhost:8000`; stop the preview with Control-C. The reader uses native MathML, local styling, and no remote math renderer or web-font service.
-
-## What goes into GitHub
-
-**Track sources and small reference evidence.** Markdown is the content source. Figures are stored once, beside the Python reference results; site/PDF builds read those files. Generated HTML, PDFs, caches, and build-time asset copies stay under ignored `build/`.
-
-After a push to `main`, GitHub Actions tests the project, builds the reader and PDFs, and deploys them to GitHub Pages. The PDF links above provide compiled copies without repeatedly committing binary PDFs. Selected milestone PDFs can later be attached to tagged GitHub Releases; ordinary reading sessions do not need releases.
-
-Local machine records, original private execution logs, large future simulation outputs, and publisher PDFs are excluded. The original local evidence is unchanged. The publication export documents omissions instead of presenting rewritten commands as original execution records.
+- Push to `main`: tests, reference-hash verification, HTML build, GitHub Pages deployment.
+- This presentation revision does not create new study runs or compile/publish PDFs in CI.
+- PDF downloads are disabled, including cached copies. Print wording will be revised separately.
+- The manual `make pdf` pipeline is retained for a later print build; it uses the earlier Markdown sources and requires Typst CLI **0.14.2**. It does not yet reflect the current HTML wording.
+- Generated HTML/PDFs, environments, caches, private local records, publisher PDFs, and large simulation outputs stay excluded from Git.
 
 ## Next study step
 
-Discuss the notes and question log, then choose deeper symmetry/vibronic reading or [a small bulk-diamond QE benchmark](reports/qe_next_step.md). The first study ran Python only. A successful small model does not establish the accuracy or feasibility of a later defect-supercell calculation.
+Discuss the notes and questions, then choose more symmetry/vibronic reading or [a bulk-diamond QE benchmark](reports/qe_next_step.md). The first study uses Python. Defect-cell cost and accuracy need separate checks.

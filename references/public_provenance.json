@@ -1,7 +1,6 @@
 {
-  "format_version": 1,
+  "format_version": 2,
   "view_kind": "curated_public_derivative_of_local_execution_evidence",
-  "generated_at_utc": "2026-10-26T19:59:16.018052+00:00",
   "policy": {
     "original_local_records_modified": false,
     "redacted_fields": [
@@ -9,8 +8,12 @@
       "working_directory",
       "python_executable",
       "input_requested",
-      "output_directory"
+      "output_directory",
+      "started_at_utc",
+      "finished_at_utc",
+      "generated_at_utc"
     ],
+    "timestamp_policy": "Exact execution and export timestamps are omitted from this public view. Source timestamps are validated and retained unchanged in local originals; no substitute dates are assigned.",
     "path_policy": "Paths in this view locate public files relative to the repository root; they do not restate original commands or machine paths.",
     "hash_scope": "Public artifacts are verified against the original artifact hashes. Hashes of withheld originals are identity commitments; public readers cannot inspect those private bytes here.",
     "claim_boundary": "These are educational reconstructions, a chosen teaching model, and table reanalysis. Completion is not independent ab initio validation or an independent attestation."
@@ -18,8 +21,6 @@
   "study": {
     "run_id": "first_study",
     "status": "COMPLETE",
-    "started_at_utc": "2026-10-26T17:30:55.938280+00:00",
-    "finished_at_utc": "2026-10-26T17:30:57.036995+00:00",
     "original_local_study_manifest_sha256": "ec0b9875d6aab02cea805e864cd77068ebbe90cba24ad8101c956112627ee088",
     "original_study_manifest_available_publicly": false,
     "matching_public_runner": {
@@ -31,8 +32,6 @@
     {
       "exercise": "charge_states",
       "status": "COMPLETE",
-      "started_at_utc": "2026-10-26T17:30:55.991003+00:00",
-      "finished_at_utc": "2026-10-26T17:30:56.258184+00:00",
       "original_local_manifest_sha256": "3b17f45cbe92c758eb966df7ba6fc42d19a58260545fd757fa70c9ab09a10374",
       "original_manifest_available_publicly": false,
       "python_version": "3.13.5",
@@ -91,8 +90,6 @@
     {
       "exercise": "parity_mixing",
       "status": "COMPLETE",
-      "started_at_utc": "2026-10-26T17:30:56.346514+00:00",
-      "finished_at_utc": "2026-10-26T17:30:56.631811+00:00",
       "original_local_manifest_sha256": "a601405fc79c2de3b7197d7dd2c2358f352135373726423a530907d5830ea736",
       "original_manifest_available_publicly": false,
       "python_version": "3.13.5",
@@ -152,8 +149,6 @@
     {
       "exercise": "hyperfine",
       "status": "COMPLETE",
-      "started_at_utc": "2026-10-26T17:30:56.717189+00:00",
-      "finished_at_utc": "2026-10-26T17:30:57.000802+00:00",
       "original_local_manifest_sha256": "a29af034cfba18925e4762bbf058966f281d04c58ffca4ba3d4b81ab97bba2db",
       "original_manifest_available_publicly": false,
       "python_version": "3.13.5",

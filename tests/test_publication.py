@@ -5,6 +5,7 @@ from pathlib import Path
 import tempfile
 import unittest
 from collections import Counter
+import copy
 
 ROOT = Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location("build_publication", ROOT / "tools/build_publication.py")
@@ -33,8 +34,43 @@ class PublicationTests(unittest.TestCase):
         self.assertTrue(all(path.is_relative_to(ROOT / "runs/first_study") for path in images))
         self.assertTrue(all(path.suffix == ".png" for path in images))
 
+    def test_site_drafts_retain_scientific_tables_equations_and_figure_targets(self):
+        scientific = {"study-notes", "charge-states", "parity-mixing", "hyperfine"}
+        for section in self.publication.sections:
+            if section["id"] not in scientific:
+                continue
+            original = self.publication.document(ROOT / section["path"]).ast
+            draft = self.publication.document(self.publication.site_paths[section["id"]]).ast
+            for kind in ("Table", "Math"):
+                def elements(ast):
+                    return Counter(json.dumps(n, sort_keys=True, ensure_ascii=False).replace("\u2013", "-").replace("\u2014", "-")
+                                   for n in builder.walk(ast) if n.get("t") == kind)
+                self.assertFalse(elements(original) - elements(draft), (section["id"], kind))
+            def figures(ast):
+                return Counter(n["c"][2][0] for n in builder.walk(ast) if n.get("t") == "Image")
+            self.assertEqual(figures(original), figures(draft), section["id"])
+
+    def test_editing_html_draft_does_not_change_print_ast(self):
+        publication = self.publication
+        included = set(publication.by_id)
+        section_id = "study-notes"
+        typst_dir = ROOT / "build/pdf/typst"
+        before = publication.section_ast(section_id, included, "pdf", typst_dir=typst_dir)
+        draft = publication.document(publication.site_paths[section_id])
+        saved = copy.deepcopy(draft.ast)
+        marker = "HTML_ONLY_DRAFT_SENTINEL"
+        try:
+            draft.ast["blocks"].append({"t": "Para", "c": [{"t": "Str", "c": marker}]})
+            web = publication.section_ast(section_id, included, "site")
+            after = publication.section_ast(section_id, included, "pdf", typst_dir=typst_dir)
+            self.assertIn(marker, json.dumps(web))
+            self.assertNotIn(marker, json.dumps(after))
+            self.assertEqual(before, after)
+        finally:
+            draft.ast = saved
+
     def test_site_links_use_sections_assets_or_public_sources(self):
-        included = set(self.publication.by_id)
+        included = {s["id"] for s in self.publication.site_sections}
         image_targets = []
         for section_id in included:
             ast = self.publication.section_ast(section_id, included, "site")
@@ -46,6 +82,13 @@ class PublicationTests(unittest.TestCase):
                     image_targets.append(node["c"][2][0])
         self.assertEqual(len(set(image_targets)), 3)
         self.assertTrue(all(t.startswith("assets/figures/runs/first_study/") for t in image_targets))
+
+    def test_archived_sections_remain_available_for_print_without_private_inputs(self):
+        visible = {s["id"] for s in self.publication.site_sections}
+        for ident in ("reading-map", "later-reading", "sources"):
+            self.assertNotIn(ident, visible)
+            self.assertIn(ident, self.publication.by_id)
+        self.assertFalse(any(p.is_relative_to(ROOT / "personal") for p in self.publication.input_files))
 
     def test_print_subset_links_do_not_target_absent_sections(self):
         included = {"study-notes", "glossary"}

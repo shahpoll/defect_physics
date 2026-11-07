@@ -8,7 +8,7 @@ separately identified view, not a replacement execution record or a new run.
 from __future__ import annotations
 
 import argparse
-from datetime import datetime, timezone
+from datetime import datetime
 from hashlib import sha256
 import json
 from pathlib import Path, PurePosixPath
@@ -20,6 +20,7 @@ RUN_PATH = PurePosixPath("runs/first_study")
 REDACTED_FIELDS = (
     "command", "working_directory", "python_executable",
     "input_requested", "output_directory",
+    "started_at_utc", "finished_at_utc", "generated_at_utc",
 )
 HASH_PATTERN = re.compile(r"[0-9a-f]{64}\Z")
 VERSION_PATTERN = re.compile(r"[A-Za-z0-9_.+!() -]+\Z")
@@ -112,6 +113,8 @@ def build_public_provenance(source_root: Path, output_root: Path) -> dict:
     summary = read_json(summary_path)
     if summary["status"] != "COMPLETE":
         raise ValueError("The curated first-study reference requires a COMPLETE source study")
+    timestamp(summary["started_at_utc"])
+    timestamp(summary["finished_at_utc"])
     listed = summary["runs"]
     if not isinstance(listed, list) or len(listed) != len(EXERCISES):
         raise ValueError("The source study must list exactly the three reference exercises")
@@ -136,6 +139,8 @@ def build_public_provenance(source_root: Path, output_root: Path) -> dict:
         original = read_json(original_path)
         if original["exercise"] != name or original["status"] != "COMPLETE":
             raise ValueError(f"Reference run is not a matching COMPLETE exercise: {name}")
+        timestamp(original["started_at_utc"])
+        timestamp(original["finished_at_utc"])
 
         artifacts = original["artifacts_sha256"]
         sources = original["source_sha256"]
@@ -193,8 +198,6 @@ def build_public_provenance(source_root: Path, output_root: Path) -> dict:
         exports.append({
             "exercise": name,
             "status": original["status"],
-            "started_at_utc": timestamp(original["started_at_utc"]),
-            "finished_at_utc": timestamp(original["finished_at_utc"]),
             "original_local_manifest_sha256": file_hash(original_path),
             "original_manifest_available_publicly": False,
             "python_version": version_text(original["python_version"]),
@@ -207,12 +210,12 @@ def build_public_provenance(source_root: Path, output_root: Path) -> dict:
             "withheld_artifacts": withheld,
         })
     record = {
-        "format_version": 1,
+        "format_version": 2,
         "view_kind": "curated_public_derivative_of_local_execution_evidence",
-        "generated_at_utc": datetime.now(timezone.utc).isoformat(),
         "policy": {
             "original_local_records_modified": False,
             "redacted_fields": list(REDACTED_FIELDS),
+            "timestamp_policy": "Exact execution and export timestamps are omitted from this public view. Source timestamps are validated and retained unchanged in local originals; no substitute dates are assigned.",
             "path_policy": "Paths in this view locate public files relative to the repository root; they do not restate original commands or machine paths.",
             "hash_scope": "Public artifacts are verified against the original artifact hashes. Hashes of withheld originals are identity commitments; public readers cannot inspect those private bytes here.",
             "claim_boundary": "These are educational reconstructions, a chosen teaching model, and table reanalysis. Completion is not independent ab initio validation or an independent attestation.",
@@ -220,8 +223,6 @@ def build_public_provenance(source_root: Path, output_root: Path) -> dict:
         "study": {
             "run_id": "first_study",
             "status": summary["status"],
-            "started_at_utc": timestamp(summary["started_at_utc"]),
-            "finished_at_utc": timestamp(summary["finished_at_utc"]),
             "original_local_study_manifest_sha256": file_hash(summary_path),
             "original_study_manifest_available_publicly": False,
             "matching_public_runner": {"path": "run_study.py", "sha256": runner_digest},
@@ -237,8 +238,8 @@ def render_markdown(record: dict) -> str:
     lines = [
         "# Public provenance for the first study", "",
         "This is a **curated derivative of local execution evidence**, not a new execution or a rewritten original manifest. Original manifests and logs remain unchanged locally. Their machine paths and commands are not published.", "",
-        "The [public JSON record](public_provenance.json) contains exact original-manifest hashes, original timestamps/status, version information, retained input/code snapshots, and hashes for the published results. Relative paths in that record locate public files; they do not claim to be the original invocation paths.", "",
-        f"Source study: **{record['study']['run_id']}**, status **{record['study']['status']}**, finished `{record['study']['finished_at_utc']}`.", "",
+        "The [public JSON record](public_provenance.json) contains exact original-manifest hashes, original completion status, version information, retained input/code snapshots, and hashes for the published results. Relative paths in that record locate public files; they do not claim to be the original invocation paths. Exact execution and export timestamps are deliberately omitted from the public view, while the unchanged local originals retain their validated timestamps.", "",
+        f"Source study: **{record['study']['run_id']}**, status **{record['study']['status']}**.", "",
         "| Exercise | Status | Retained run artifacts |", "|---|---|---:|",
     ]
     for exercise in record["exercises"]:
@@ -248,7 +249,7 @@ def render_markdown(record: dict) -> str:
         "", "## What can be checked from this repository", "",
         "The published CSVs, figures, metrics, and input/code snapshots can be checked against `published_files_sha256` in the JSON record. The exporter rejects modified public artifacts or source snapshots that do not match their recorded hashes. The original study runner and public input configurations also match the execution evidence.", "",
         "## What is withheld", "",
-        "Original commands, working directories, executable locations, requested local input/output paths, installation records and uncurated logs are local-only. Withheld run artifacts are named as relative identifiers with hashes and an explicit withholding reason, rather than linked as available downloads.", "",
+        "Original commands, working directories, executable locations, requested local input/output paths, exact execution timestamps, installation records and uncurated logs are local-only. Export timestamps are also omitted; no substitute dates are assigned. Withheld run artifacts are named as relative identifiers with hashes and an explicit withholding reason, rather than linked as available downloads.", "",
         "A hash of an unpublished original is an identity commitment, not a way for a public reader to inspect that original or independently attest execution. The published view makes its redactions explicit and preserves the distinction between original evidence and a portable presentation.", "",
         "## Interpretation", "",
         "A COMPLETE teaching exercise passed its specified mathematical checks. It does not establish a new electronic-structure calculation, experimental measurement, converged DFT result, or independent validation of the paper. The original local manifests were not edited to make this public view.", "",

@@ -1,0 +1,35 @@
+# Questions for discussion
+
+- My gap: something I still need to derive/understand. Paper limitation: 2013 method boundary. Potential question: something I might explore; check later work before calling it a research gap.
+- Page numbers: [arXiv v2, 8-page PDF](https://arxiv.org/pdf/1310.2137v2).
+
+| ID | Type | Question in my own words | Where it comes from | Next useful action / current status |
+|---|---|---|---|---|
+| Q01 | My gap | Can I construct the six dangling-bond combinations and recover a1g + a2u + eu + eg? | Sec. III A, p. 3; Fig. 2 | Work through the character decomposition; open derivation task. |
+| Q02 | My gap | Why does eg2 allow a spin triplet and singlets, and why is 3A2g the ground term in this description? | Secs. III A and III D, pp. 3, 6 | Build antisymmetric two-electron states; distinguish allowed terms from computed energy ordering. |
+| Q03 | My gap | What is the electron count in the reduced defect basis, versus the entire supercell? | Sec. III A, p. 3 | Draw neutral/negative/doubly-negative occupancies and state the hole convention. |
+| Q04 | My gap | Why cannot I subtract orbital energies and call the result a ZPL? | Sec. II, p. 2; Sec. III C, p. 5 | Draw configuration-coordinate surfaces; identify total energies and geometry. |
+| Q05 | My gap | How can eu be in the valence band and still contribute a localized optical excitation? | Sec. III A, p. 3; Fig. 3, p. 4 | Separate energy overlap, hybridization, and spatial localization. |
+| Q06 | My gap | How do formation-energy slopes favor each charge as EF changes? | Eqs. (3)-(4), p. 2; Fig. 4, p. 4 | Read the charge-state model report; derive crossings before discussing populations. |
+| Q07 | Paper limitation | Which neutral excited term cannot the constrained-DFT determinant represent, and what conclusion is only indirect? | Sec. III D, p. 6 | Explain the 3Eu exclusion versus the 3A1u assignment; keep this distinction in meeting notes. |
+| Q08 | Paper limitation | Which conclusions require dynamic vibronic coupling beyond a static relaxed structure? | Sec. III C, pp. 4-5 | Compare the selective follow-up literature; dynamic JT has later treatments. This is not a claim that it remains unstudied. |
+| Q09 | My gap | Which perturbations break inversion, and which only lower some other symmetry? | Sec. III C and Fig. 5, pp. 5-6 | Derive inversion preservation under a homogeneous affine strain; compare with parity-mixing model. |
+| Q10 | Paper limitation | Are proposed shelving channels supported by energies only, or are rates and branching ratios calculated? | Sec. III C, pp. 5-6 | Mark the distinction: the paper proposes channels; a quantitative kinetic model is a separate task. |
+| Q11 | My gap | Why is the Si contact coupling nonzero if the simple eg picture has no Si orbital contribution? | Sec. III D, p. 6 | Review spin-density overlap and polarization; do not reduce the tensor to atomic-orbital labels. |
+| Q12 | Paper limitation | Why does the HSE06-cp column improve 13C but worsen 29Si agreement? | Table I, p. 6 | First quantify the discrepancy. The table alone does not identify its cause. |
+| Q13 | Paper limitation | How much improvement is due specifically to core polarization? | Sec. II, p. 2; Table I, p. 6 | Need matched functional/cell/settings with and without the core term; existing LDA/HSE comparison is confounded. |
+| Q14 | Source discrepancy | Is 28Si in the introduction/methods an isotope typo? | Sec. I, p. 1; Sec. II, p. 2; Table I, p. 6 | Working interpretation: likely yes; table/discussion use 29Si and nuclear-spin data support it. Preserve the discrepancy. |
+| Q15 | Potential question | Can a modest QE calculation recover qualitative localization and spin in a reduced SiV model? | Motivation from Sec. III A | Benchmark bulk diamond and resource use first. Treat PBE/smaller-cell results as a different preliminary model. |
+| Q16 | Potential question | Which proposed 2013 shelving assignments survived later experimental/theoretical tests? | Secs. III C-D, pp. 5-7 | Check later primary sources; broader targeted search needed before any claim of novelty. |
+| Q17 | Potential question | How does a real inversion-breaking environment mix parity and modify measurable oscillator strength? | Symmetry reasoning motivated by Sec. III C | Toy mixing can teach the trend; microscopic parameters and actual perturbations require new evidence. |
+| Q18 | Potential question | What controls charge-conversion rates under a stated laser and sample environment? | Secs. III C-D and IV, pp. 6-7 | Separate equilibrium crossing reconstruction from optical kinetics; literature and rate inputs are not supplied by the first model. |
+
+## First meeting
+
+1. Orbital / term / optical / charge-transition energies: clear enough to explain at the board?
+2. Neutral optical assignment: indirect. Silicon hyperfine mismatch: retain. Agreed?
+3. Next small calculation: charge thermodynamics, symmetry breaking, or hyperfine comparison?
+4. Next stage: bulk-diamond QE benchmark, or more group theory/vibronic reading?
+
+- Potential question: an idea for me to explore, not a project commitment or a confirmed unsolved problem.
+- Missing input: closest later work, what it already answers, and evidence needed for a useful extension.

@@ -27,21 +27,17 @@ jobs:
           cache-dependency-path: |
             requirements.txt
             requirements-publication.txt
-      - name: Set up PDF engine
-        uses: typst-community/setup-typst@fee4b65b091cc546f02ce3be15fad8760f38a108 # v5.3.0
-        with:
-          typst-version: '0.14.2'
       - name: Install project dependencies
         run: python -m pip install -r requirements.txt -r requirements-publication.txt
       - name: Check mathematics and publication pipeline
         run: PYTHONPATH=src python -m unittest discover -s tests -v
       - name: Verify public reference evidence
         run: python tools/check_reference.py
-      - name: Re-execute the three small exercises
-        run: python run_study.py --output build/ci-reference
-      - name: Build reader and printable notes
-        run: python tools/build_publication.py --format all
-      - name: Upload website and PDF downloads
+      - name: Check public text
+        run: python tools/check_public_text.py
+      - name: Build HTML reader
+        run: python tools/build_publication.py --format site
+      - name: Upload website
         if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:

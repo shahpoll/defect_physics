@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from datetime import datetime, timedelta, timezone
 from hashlib import sha256
 import json
 from pathlib import Path
@@ -35,6 +36,7 @@ class PublicProvenanceTests(unittest.TestCase):
         self.source.mkdir()
         self.output.mkdir()
         self.private_path = "/PRIVATE_FIXTURE_ONLY/student/notes"
+        self.fixture_epoch = datetime.fromtimestamp(0, tz=timezone.utc)
         runner = b"print('synthetic fixture runner')\n"
         (self.source / "run_study.py").write_bytes(runner)
         (self.output / "run_study.py").write_bytes(runner)
@@ -69,8 +71,8 @@ class PublicProvenanceTests(unittest.TestCase):
             config.write_bytes(input_bytes)
             manifest = {
                 "exercise": name, "status": "COMPLETE",
-                "started_at_utc": "2026-10-26T17:00:00+00:00",
-                "finished_at_utc": "2026-10-26T17:00:01+00:00",
+                "started_at_utc": self.fixture_epoch.isoformat(),
+                "finished_at_utc": (self.fixture_epoch + timedelta(seconds=1)).isoformat(),
                 "command": [self.private_path + "/python", "--input", self.private_path + "/input.json"],
                 "working_directory": self.private_path,
                 "python_executable": self.private_path + "/python",
@@ -88,8 +90,8 @@ class PublicProvenanceTests(unittest.TestCase):
                 "command": [self.private_path + "/python", "-m", name],
             })
         study = {
-            "status": "COMPLETE", "started_at_utc": "2026-10-26T17:00:00+00:00",
-            "finished_at_utc": "2026-10-26T17:00:03+00:00",
+            "status": "COMPLETE", "started_at_utc": self.fixture_epoch.isoformat(),
+            "finished_at_utc": (self.fixture_epoch + timedelta(seconds=3)).isoformat(),
             "runs": listed, "runner_sha256": digest(runner),
         }
         (self.source / "runs/first_study/study_manifest.json").write_text(json.dumps(study, indent=2) + "\n")
@@ -133,6 +135,44 @@ class PublicProvenanceTests(unittest.TestCase):
         for locator in record["published_files_sha256"]:
             self.assertFalse(Path(locator).is_absolute())
             self.assertNotIn("..", Path(locator).parts)
+
+    def test_private_dates_are_omitted_without_altering_original_records(self):
+        before = self.inventory(self.source)
+        record = export_provenance(self.source, self.output)
+        self.assertEqual(record["format_version"], 2)
+        self.assertNotIn("generated_at_utc", record)
+        for field in ("started_at_utc", "finished_at_utc", "generated_at_utc"):
+            self.assertIn(field, record["policy"]["redacted_fields"])
+            self.assertNotIn(field, record["study"])
+            for exercise in record["exercises"]:
+                self.assertNotIn(field, exercise)
+        self.assertIn("omitted", record["policy"]["timestamp_policy"])
+        self.assertIn("validated", record["policy"]["timestamp_policy"])
+        public_text = json.dumps(record) + (self.output / "references/public_provenance.md").read_text()
+        for seconds in (0, 1, 3):
+            self.assertNotIn((self.fixture_epoch + timedelta(seconds=seconds)).isoformat(), public_text)
+        original = json.loads(self.source_manifest().read_text())
+        self.assertEqual(original["started_at_utc"], self.fixture_epoch.isoformat())
+        self.assertEqual(before, self.inventory(self.source))
+        validate_public_artifacts(record, self.output)
+
+    def test_malformed_private_execution_timestamps_are_still_rejected(self):
+        invalid_values = ("not-a-timestamp", self.fixture_epoch.replace(tzinfo=None).isoformat(), 0)
+        for field in ("started_at_utc", "finished_at_utc"):
+            for value in invalid_values:
+                with self.subTest(field=field, value=value):
+                    self.change_source_manifest(field, value)
+                    with self.assertRaises(ValueError):
+                        export_provenance(self.source, self.output)
+                    self.change_source_manifest(field, self.fixture_epoch.isoformat())
+
+    def test_malformed_private_study_timestamp_is_still_rejected(self):
+        path = self.source / "runs/first_study/study_manifest.json"
+        study = json.loads(path.read_text())
+        study["finished_at_utc"] = "not-a-timestamp"
+        path.write_text(json.dumps(study))
+        with self.assertRaises(ValueError):
+            export_provenance(self.source, self.output)
 
     def test_no_source_evidence_or_existing_public_artifact_changes(self):
         source_before = self.inventory(self.source)

@@ -2,9 +2,9 @@
 
 This is a **curated derivative of local execution evidence**, not a new execution or a rewritten original manifest. Original manifests and logs remain unchanged locally. Their machine paths and commands are not published.
 
-The [public JSON record](public_provenance.json) contains exact original-manifest hashes, original timestamps/status, version information, retained input/code snapshots, and hashes for the published results. Relative paths in that record locate public files; they do not claim to be the original invocation paths.
+The [public JSON record](public_provenance.json) contains exact original-manifest hashes, original completion status, version information, retained input/code snapshots, and hashes for the published results. Relative paths in that record locate public files; they do not claim to be the original invocation paths. Exact execution and export timestamps are deliberately omitted from the public view, while the unchanged local originals retain their validated timestamps.
 
-Source study: **first_study**, status **COMPLETE**, finished `2026-10-26T17:30:57.036995+00:00`.
+Source study: **first_study**, status **COMPLETE**.
 
 | Exercise | Status | Retained run artifacts |
 |---|---|---:|
@@ -18,7 +18,7 @@ The published CSVs, figures, metrics, and input/code snapshots can be checked ag
 
 ## What is withheld
 
-Original commands, working directories, executable locations, requested local input/output paths, installation records and uncurated logs are local-only. Withheld run artifacts are named as relative identifiers with hashes and an explicit withholding reason, rather than linked as available downloads.
+Original commands, working directories, executable locations, requested local input/output paths, exact execution timestamps, installation records and uncurated logs are local-only. Export timestamps are also omitted; no substitute dates are assigned. Withheld run artifacts are named as relative identifiers with hashes and an explicit withholding reason, rather than linked as available downloads.
 
 A hash of an unpublished original is an identity commitment, not a way for a public reader to inspect that original or independently attest execution. The published view makes its redactions explicit and preserves the distinction between original evidence and a portable presentation.
 

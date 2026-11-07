@@ -1,6 +1,6 @@
 # First discussion: what I currently understand about SiV
 
-Prepared 26 October 2026. **Draft study notes plus three executed Python exercises.** My understanding is for discussion and correction; this package does not certify that I can yet derive every step unaided.
+**Draft study notes plus three executed Python exercises.** My understanding is for discussion and correction; this package does not certify that I can yet derive every step unaided.
 
 ## What we studied
 

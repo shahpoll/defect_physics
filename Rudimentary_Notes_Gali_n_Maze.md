@@ -1,11 +1,11 @@
 # Rudimentary_Notes_Gali_n_Maze
 Core question: which electronic states of the silicon-vacancy defect explain the light and magnetic signals observed experimentally? 
 
-Working reading notes, draft expanded 26 October 2026. These are a draft to think with and discuss, not a record that I have mastered every step. I want the uncertainty to be visible and useful.
+Working reading notes, draft. These are a draft to think with and discuss, not a record that I have mastered every step. I want the uncertainty to be visible and useful.
 
 The authors are **Adam Gali and Jeronimo R. Maze**. I am keeping the original filename. My reading copy is [arXiv:1310.2137v2](https://arxiv.org/pdf/1310.2137v2), dated 14 October 2013, **8 PDF pages**. The published article is [Physical Review B 88, 235205 (2013)](https://doi.org/10.1103/PhysRevB.88.235205), with a different, 7-page layout. Every page number below refers to the **1-based arXiv v2 PDF page**, unless explicitly stated otherwise.
 
-How I mark evidence: **Direct calculation** means a result of the paper's calculation; it does not mean experimental proof. **Indirect support** means an assignment follows by combining calculated and experimental information. **Proposal** means a mechanism suggested by the authors. **My understanding** means an explanatory derivation or interpretation to check. “Paper limitation” means a boundary of this particular study, not automatically an unsolved problem in 2026. Later context is kept in [the follow-up note](reports/literature_followup.md).
+How I mark evidence: **Direct calculation** means a result of the paper's calculation; it does not mean experimental proof. **Indirect support** means an assignment follows by combining calculated and experimental information. **Proposal** means a mechanism suggested by the authors. **My understanding** means an explanatory derivation or interpretation to check. “Paper limitation” means a boundary of this particular study, not automatically an unsolved problem today. Later context is kept in [the follow-up note](reports/literature_followup.md).
 
 ## 1. What question are they actually trying to answer?
 
@@ -21,7 +21,7 @@ I should keep two questions separate: “Which assignment is supported?” and �
 
 My mental drawing is: take out two adjacent carbons, then put one silicon between their old sites. The word “vacancy” in the name should not make me imagine only one missing site with Si sitting normally on the other. Before doing an electronic calculation, I should be able to sketch the actual structure and identify its inversion center.
 
-The six carbon dangling bonds form a small basis for a defect-molecule picture. Symmetry tells me which combinations can mix with silicon orbitals. In the paper's model the eg combinations have carbon dangling-bond character, whereas other symmetry channels can mix with Si contributions. This helps explain why an orbital associated with a Si defect need not be concentrated on the Si atom. [Paper: Sec. III A, p. 3; Figs. 2–3, pp. 3–4.]
+The six carbon dangling bonds form a small basis for a defect-molecule picture. Symmetry tells me which combinations can mix with silicon orbitals. In the paper's model the eg combinations have carbon dangling-bond character, whereas other symmetry channels can mix with Si contributions. This helps explain why an orbital associated with a Si defect need not be concentrated on the Si atom. [Paper: Sec. III A, p. 3; Figs. 2-3, pp. 3-4.]
 
 ## 3. Electron counting before sophisticated calculations
 
@@ -31,7 +31,7 @@ The six carbon dangling bonds form a small basis for a defect-molecule picture. 
 a_{1g}^{2}a_{2u}^{2}e_u^{4}e_g^{2}.
 \]
 
-The exponents count electrons, not distinct orbital functions. An e level contains two spatial orbital functions; with two spin choices each, its capacity is four electrons. In the neutral ground configuration the two eg electrons favor a triplet arrangement. Adding electrons fills that same manifold. [Paper: Sec. III A, p. 3; Secs. III C–D, pp. 4–6.]
+The exponents count electrons, not distinct orbital functions. An e level contains two spatial orbital functions; with two spin choices each, its capacity is four electrons. In the neutral ground configuration the two eg electrons favor a triplet arrangement. Adding electrons fills that same manifold. [Paper: Sec. III A, p. 3; Secs. III C-D, pp. 4-6.]
 
 | Charge state | Electrons in this defect basis | Active occupation | Spin in the paper's ground-state description |
 |---|---:|---|---|
@@ -52,7 +52,7 @@ I need to stop reading “doublet” as if it always means the same thing.
 - Uppercase **A** or **E** labels the spatial symmetry of a many-electron state. An A state is orbital singlet; an E state is orbital doublet.
 - **g/u** describes even/odd inversion parity. It does not mean ground/upper.
 
-For example, the neutral **3A2g** ground state is spin triplet but orbital singlet. The negative **2Eg** state is spin doublet and orbitally degenerate in the ideal D3d description. An orbital occupancy diagram and a many-electron term diagram therefore answer different questions. [Paper examples: Sec. III A, p. 3; Sec. III C, pp. 4–5; Sec. III D, p. 6.]
+For example, the neutral **3A2g** ground state is spin triplet but orbital singlet. The negative **2Eg** state is spin doublet and orbitally degenerate in the ideal D3d description. An orbital occupancy diagram and a many-electron term diagram therefore answer different questions. [Paper examples: Sec. III A, p. 3; Sec. III C, pp. 4-5; Sec. III D, p. 6.]
 
 My learning task is to derive the allowed terms from antisymmetrized electron states, rather than merely memorize the labels. Hund's rule is a useful first guide to spin ordering, but it is not a substitute for the full symmetry construction or an energy calculation.
 
@@ -71,7 +71,7 @@ This seems central enough to keep as a separate checkpoint.
 
 In a configuration-coordinate sketch, let Qg and Qe denote ground- and excited-state equilibrium geometries. Vertical absorption compares Ee(Qg) with Eg(Qg); vertical emission compares Ee(Qe) with Eg(Qe). The relaxed-minimum difference is the electronic approximation to the ZPL; zero-point vibrational corrections require additional care. Drawing both surfaces makes relaxation energy less mysterious.
 
-The paper uses constrained DFT to obtain excited-state energies and nuclear relaxation. It defines charge-transition levels from **relaxed total energies with charged-cell corrections**, rather than reading them from an orbital plot. [Paper: Sec. II, p. 2, Eqs. (3)–(4); Sec. III B, p. 4.]
+The paper uses constrained DFT to obtain excited-state energies and nuclear relaxation. It defines charge-transition levels from **relaxed total energies with charged-cell corrections**, rather than reading them from an orbital plot. [Paper: Sec. II, p. 2, Eqs. (3)-(4); Sec. III B, p. 4.]
 
 As a useful warning, its neutral occupied eg orbital lies near VBM + 0.3 eV, while eu is resonant below the VBM. Those orbital positions should not be subtracted and announced as the observed ZPL. [Paper: Sec. III A, p. 3.] My first program should make the labels and references explicit before it makes an attractive plot.
 
@@ -79,7 +79,7 @@ As a useful warning, its neutral occupied eg orbital lies near VBM + 0.3 eV, whi
 
 My first cartoon of a color center would put every important orbital neatly inside the gap. This paper forces a better picture: an orbital can retain defect character while overlapping energetically with host-band states. “Resonant with the valence band” does not mean “irrelevant” or “completely delocalized.”
 
-**Direct calculation:** the paper identifies an eu defect resonance in the valence band and a localized eg gap state. It also finds that the defect perturbs the valence-band edge, producing symmetry-resolved states that can enter excitations. [Paper: Sec. III A, p. 3; Figs. 2–3, pp. 3–4.]
+**Direct calculation:** the paper identifies an eu defect resonance in the valence band and a localized eg gap state. It also finds that the defect perturbs the valence-band edge, producing symmetry-resolved states that can enter excitations. [Paper: Sec. III A, p. 3; Figs. 2-3, pp. 3-4.]
 
 My takeaway is to inspect both energies **and spatial character**. A density-of-states peak alone cannot establish localization; a localized-looking orbital alone cannot establish an optical transition. In future calculations I would want orbital plots, projections, and a clear statement of the charge and occupancy used.
 
@@ -91,11 +91,11 @@ This is stronger evidence than “a gap orbital happened to have a similar eigen
 
 **Author interpretation:** similar charge distributions in the two electronic states help explain the small structural relaxation and weak vibrational sideband. The paper also offers a qualitative explanation for the difference in ground- and excited-state fine-structure splittings using differing Si orbital contributions. It does not calculate a complete spin-orbit/vibronic spectrum here. [Paper: Sec. III C, p. 5.]
 
-## 8. Shelving states and the power—and limit—of parity
+## 8. Shelving states and the power-and limit-of parity
 
 I think of a shelving state as a place where population can pause outside the main bright optical cycle. “Dark” does not automatically mean a different spin multiplicity.
 
-**Direct calculation plus proposed interpretation:** excitations involving perturbed valence-band-edge states yield additional same-spin states. The paper proposes these as shelving channels for SiV−. In the ideal inversion-symmetric description, their parity matches the ground state's, so electric-dipole emission to it is forbidden. [Paper: Sec. III C, pp. 5–6; Fig. 5(b,c), p. 5.]
+**Direct calculation plus proposed interpretation:** excitations involving perturbed valence-band-edge states yield additional same-spin states. The paper proposes these as shelving channels for SiV−. In the ideal inversion-symmetric description, their parity matches the ground state's, so electric-dipole emission to it is forbidden. [Paper: Sec. III C, pp. 5-6; Fig. 5(b,c), p. 5.]
 
 **My derivation:** the electric-dipole operator is odd under inversion. In an integral ⟨f|r|i⟩, two even states with an odd operator make an odd integrand, whose integral vanishes in the symmetric system. Opposite parity is necessary here, but not sufficient for every transition: the full representation, polarization, spin, and matrix element still matter. Higher-order, phonon-assisted, and symmetry-breaking processes require separate treatment.
 
@@ -109,11 +109,11 @@ I also need to qualify its broad wording about distortion. A homogeneous strain 
 
 I must not write “they directly reproduced the neutral 1.31 eV ZPL.” The method's representability limit is part of the result. Their reasoning is meaningful, but conditional on the relevant candidate-state picture and the experimental interpretation. This is a good supervisor question: what calculation would directly test the missing state rather than only eliminate an alternative?
 
-The same section proposes a neutral metastable state near 1.27 eV and discusses symmetry breaking and charge conversion. These are mechanisms to investigate, not a complete predictive kinetic model. [Paper: Sec. III D, pp. 6–7.]
+The same section proposes a neutral metastable state near 1.27 eV and discusses symmetry breaking and charge conversion. These are mechanisms to investigate, not a complete predictive kinetic model. [Paper: Sec. III D, pp. 6-7.]
 
 ## 10. Hyperfine coupling: useful evidence with a visible mismatch
 
-**My understanding:** a hyperfine tensor connects electronic spin and nuclear spin. Its isotropic part is one third of the trace; its traceless part describes anisotropy. The contact and dipolar contributions probe different aspects of spin density. A nucleus can have appreciable contact coupling even when the simplest orbital picture places most unpaired density elsewhere. [Paper framework: Sec. II, p. 2, Eqs. (1)–(2); application: Sec. III D, p. 6.]
+**My understanding:** a hyperfine tensor connects electronic spin and nuclear spin. Its isotropic part is one third of the trace; its traceless part describes anisotropy. The contact and dipolar contributions probe different aspects of spin density. A nucleus can have appreciable contact coupling even when the simplest orbital picture places most unpaired density elsewhere. [Paper framework: Sec. II, p. 2, Eqs. (1)-(2); application: Sec. III D, p. 6.]
 
 Table I is worth reading row by row. For 13C, experiment gives Aparallel/Aperpendicular = 66.2/30.2 MHz; their HSE06-cp result gives 68/28 MHz, closer than the older LDA-nocp pair 51/12 MHz. For 29Si, however, experiment gives 76.3/78.9 MHz, older LDA-nocp gives 78/82 MHz, and HSE06-cp gives 92/97 MHz. The newer column is **not uniformly better**. [Paper: Table I, p. 6.]
 
@@ -123,7 +123,7 @@ The authors emphasize core polarization for carbon. But LDA-nocp versus HSE06-cp
 
 ## 11. What did their method leave outside its reach?
 
-I want to write down the actual scale rather than hide it behind “an ab initio calculation.” These are **the paper's settings**, not a ready-made input recipe for our Mac. [Paper: Sec. II, pp. 2–3.]
+I want to write down the actual scale rather than hide it behind “an ab initio calculation.” These are **the paper's settings**, not a ready-made input recipe for our Mac. [Paper: Sec. II, pp. 2-3.]
 
 | Method ingredient | What the paper uses | What I should remember |
 |---|---|---|
@@ -134,12 +134,12 @@ I want to write down the actual scale rather than hide it behind “an ab initio
 | Standard cutoffs | 370 / 740 eV for wavefunctions / charge density | VASP dataset/code-dependent choices; not transferable QE cutoffs. |
 | Hyperfine cutoffs | 500 / 1000 eV | The hyperfine observable uses a stricter basis setting. |
 | Geometry relaxation | Constant volume; forces below 0.01 eV/Å | Geometry convergence is distinct from electronic, cell-size, and excitation convergence. |
-| Charged cells | Potential alignment and Lany–Zunger charge-correction scheme, paper Ref. 33 | Keep the correction convention with the total energies and reference. |
+| Charged cells | Potential alignment and Lany-Zunger charge-correction scheme, paper Ref. 33 | Keep the correction convention with the total energies and reference. |
 | Excitations | Constrained DFT | Check whether the desired term can be represented by the chosen determinant. |
 
-Those choices matter for both cost and interpretation. A QE study needs its own compatible pseudopotentials and observable-specific convergence checks. The paper permits static distortions but explicitly says the dynamic coupling of vibrations and electronic states is not captured. A relaxed lower-symmetry geometry therefore does not determine the full dynamic Jahn–Teller behavior or its optical fine structure. [Paper: Sec. III C, pp. 4–5.]
+Those choices matter for both cost and interpretation. A QE study needs its own compatible pseudopotentials and observable-specific convergence checks. The paper permits static distortions but explicitly says the dynamic coupling of vibrations and electronic states is not captured. A relaxed lower-symmetry geometry therefore does not determine the full dynamic Jahn-Teller behavior or its optical fine structure. [Paper: Sec. III C, pp. 4-5.]
 
-My questions divide into three buckets: concepts I need to learn, limitations the 2013 paper states, and possible research directions requiring newer literature. Dynamic Jahn–Teller treatment belongs in the second bucket **for this paper**; subsequent work exists. [Selective later comparison](reports/literature_followup.md) must come before any claim of novelty.
+My questions divide into three buckets: concepts I need to learn, limitations the 2013 paper states, and possible research directions requiring newer literature. Dynamic Jahn-Teller treatment belongs in the second bucket **for this paper**; subsequent work exists. [Selective later comparison](reports/literature_followup.md) must come before any claim of novelty.
 
 Other boundaries I should keep visible: a charge-state formation-energy diagram is equilibrium thermodynamics, not an optical pumping simulation; a proposed shelving pathway does not give transition rates; a large supercell reduces but does not prove elimination of every finite-size error; and a PBE calculation in Quantum ESPRESSO would be a different model, not an exact reproduction of this HSE06/VASP study.
 

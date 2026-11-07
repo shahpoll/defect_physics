@@ -6,7 +6,7 @@ The public `first_study/` folder is the small reference package. Each exercise c
 - `provenance/code/`: the package source at execution;
 - numerical CSV tables and labeled PNG figures;
 - `metrics.json`: derived values and mathematical checks;
-- The [public provenance view](../references/public_provenance.md) and [JSON record](../references/public_provenance.json) locate the retained files and record original status, versions, timestamps, and hashes.
+- The [public provenance view](../references/public_provenance.md) and [JSON record](../references/public_provenance.json) locate the retained files and record original status, versions, and hashes. Exact execution times remain in the unchanged local records.
 
 Original top-level and per-exercise manifests and logs remain unchanged in the local evidence package. They contain machine paths and commands and are excluded from the public checkout. The public derivative retains their exact hashes and explicitly names the withheld fields; its relative file paths are portable locators, not rewritten original commands. Maintainers can regenerate it with the [exporter](../tools/export_public_provenance.py) using the untouched local evidence as input.
 

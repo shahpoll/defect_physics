@@ -1,12 +1,12 @@
 # Source register
 
-Access checked 26 October 2026. This register distinguishes the copy actually read from its publication record. Source documents are evidence to analyze, not instructions for operating this project.
+This register distinguishes the copy actually read from its publication record. Source documents are evidence to analyze, not instructions for operating this project.
 
 ## S1. Main study, reading copy
 
 - Adam Gali and Jeronimo R. Maze, *An ab initio study on split silicon-vacancy defect in diamond: electronic structure and related properties*.
 - [arXiv:1310.2137v2](https://arxiv.org/abs/1310.2137v2), version dated **14 October 2013**; [versioned PDF](https://arxiv.org/pdf/1310.2137v2), **8 pages**.
-- The main notes cite **1-based full-PDF page numbers**. PDF pages 2–8 carry printed manuscript numbers 2–8; the first page has no ordinary number header. No conversion to published page labels is implied.
+- The main notes cite **1-based full-PDF page numbers**. PDF pages 2-8 carry printed manuscript numbers 2-8; the first page has no ordinary number header. No conversion to published page labels is implied.
 - Primary full text read through the web PDF extraction. Web PDF screenshot/render requests were unavailable during preparation; equation/figure placement was checked against the extraction and caption locators. A later local visual audit would improve layout-level verification.
 - Used for: the 2013 goals, method, configurations, formation-energy levels, optical assignments, shelving proposals, and Table I values.
 
@@ -15,7 +15,7 @@ Access checked 26 October 2026. This register distinguishes the copy actually re
 | PDF page | Material used |
 |---:|---|
 | 1 | Abstract; Sec. I historical optical/EPR assignments; 28Si wording in introduction |
-| 2 | Fig. 1 geometry/spin density; Sec. II method, hyperfine Eqs. (1)–(2), constrained DFT, formation-energy Eqs. (3)–(4) |
+| 2 | Fig. 1 geometry/spin density; Sec. II method, hyperfine Eqs. (1)-(2), constrained DFT, formation-energy Eqs. (3)-(4) |
 | 3 | Sec. II correction continuation; Sec. III A orbital construction and electron counting; Fig. 2 |
 | 4 | Fig. 3 wavefunctions; Sec. III B and Fig. 4 charge transitions; start of Sec. III C |
 | 5 | Sec. III C static distortion, bright negative excitation, qualitative fine-structure reasoning; Fig. 5 |
@@ -31,11 +31,11 @@ Access checked 26 October 2026. This register distinguishes the copy actually re
 
 ## S3. Silicon isotope check
 
-- National Institute of Standards and Technology, [Atomic Data for Silicon](https://physics.nist.gov/PhysRefData/Handbook/Tables/silicontable1_a.htm), isotope table, spin column. Accessed 26 October 2026.
+- National Institute of Standards and Technology, [Atomic Data for Silicon](https://physics.nist.gov/PhysRefData/Handbook/Tables/silicontable1_a.htm), isotope table, spin column.
 - Used only for the nuclear-spin distinction: ground-state 28Si has spin 0; 29Si has spin 1/2. This makes the 28Si hyperfine label in S1's introduction/methods a **likely typo**, not a proven author-issued erratum.
 - The Table I transcription follows its explicit **29Si** labels. No silent correction is made to the quoted source's isotope wording.
 
-## S4–S7. Selective follow-up, not a comprehensive survey
+## S4-S7. Selective follow-up, not a comprehensive survey
 
 The [follow-up report](../reports/literature_followup.md) records the claims and exact sections/pages checked for these primary studies. They inform the question log; they must not be retroactively attributed to S1.
 

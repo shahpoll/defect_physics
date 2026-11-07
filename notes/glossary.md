@@ -21,14 +21,14 @@ Working definitions, written to support the [main reading notes](../Rudimentary_
 | Hund's rule | A guide to favorable spin arrangements in degenerate shells; full ordering depends on interactions. | Draw neutral eg2 high-spin occupancy without claiming a quantitative splitting. |
 | Valence-band maximum (VBM) | The highest valence-band edge of the stated host/reference calculation. | Label energy zero consistently. |
 | Conduction-band minimum | The lowest conduction-band edge in the specified model. | Distinguish a band edge from a defect level. |
-| Band gap | Difference between valence- and conduction-band edges, with the theory/measurement specified. | Separate Kohn–Sham and measured fundamental/optical gaps. |
+| Band gap | Difference between valence- and conduction-band edges, with the theory/measurement specified. | Separate Kohn-Sham and measured fundamental/optical gaps. |
 | Resonant defect state | Defect-related electronic character overlaps host-band energies and can mix with the band. | Inspect localization as well as energy. Paper Sec. III A, p. 3; Fig. 3, p. 4. |
 | DFT | A ground-state density-based electronic-structure framework with an approximate exchange-correlation functional in practical use. | Name the functional and observable before assessing accuracy. |
 | PBE / HSE06 | A semilocal / screened hybrid functional used at different stages or in different models. | Avoid calling a PBE result a reproduction of an HSE06 number. |
 | Constrained DFT | Here, an imposed electronic occupancy used to access a selected excited-state description and relaxation. | Check whether the target term can be represented by that construction. |
 | Supercell | A repeated simulation cell containing a defect and its periodic replicas. | Ask whether replicas affect the property being discussed. |
 | Γ-point approximation | Sampling the supercell Brillouin zone at Γ only. | Test suitability rather than assume large cells make every observable converged. |
-| Charged-cell correction | Treatment of artifacts from a periodically repeated charged defect and compensating background/reference. | Keep correction and potential alignment with total-energy data. Paper Sec. II, pp. 2–3. |
+| Charged-cell correction | Treatment of artifacts from a periodically repeated charged defect and compensating background/reference. | Keep correction and potential alignment with total-energy data. Paper Sec. II, pp. 2-3. |
 | Formation energy | Energy cost relative to specified atom/electron reservoirs, not an optical transition energy. | State chemical potentials and the Fermi-level reference. |
 | Thermal charge-transition level | Fermi level where relaxed formation energies of two charge states are equal. | Find a line crossing and its slope difference. Paper Eq. (4), p. 2. |
 | Fermi level | Electron chemical potential; in formation-energy plots it is a reservoir parameter. | Explain why more positive EF can favor negative charge. |
@@ -36,9 +36,9 @@ Working definitions, written to support the [main reading notes](../Rudimentary_
 | ZPL | Zero-phonon line: the transition without net vibrational quanta in the optical event; theory requires clear vibrational conventions. | Draw relaxed minima and distinguish vertical transitions. |
 | Stokes shift | Difference between absorption and emission energies under a defined comparison. | Do not equate it automatically with one relaxation-energy component. |
 | Vibronic state | A state with coupled electronic and vibrational character. | Identify when a purely electronic diagram omits essential dynamics. |
-| Jahn–Teller effect | Coupling of an electronically degenerate state to distortions that can lower energy. | Distinguish a static minimum from motion among equivalent distortions. |
-| Dynamic Jahn–Teller effect | A coupled vibronic problem not exhausted by optimizing one static geometry. | Consult later work before declaring it an open problem. |
-| Spin–orbit coupling | Coupling between spin and orbital degrees of freedom. | Explain why a spin-free term scheme is not a full fine-structure spectrum. |
+| Jahn-Teller effect | Coupling of an electronically degenerate state to distortions that can lower energy. | Distinguish a static minimum from motion among equivalent distortions. |
+| Dynamic Jahn-Teller effect | A coupled vibronic problem not exhausted by optimizing one static geometry. | Consult later work before declaring it an open problem. |
+| Spin-orbit coupling | Coupling between spin and orbital degrees of freedom. | Explain why a spin-free term scheme is not a full fine-structure spectrum. |
 | Electric-dipole selection rule | A symmetry condition for a dipole matrix element; opposite parity is necessary for ideal centrosymmetric electronic states. | Explain why opposite parity is not by itself sufficient. |
 | Shelving / metastable state | A state outside the bright cycle that can retain population; an actual lifetime/rate needs more evidence. | Avoid treating an energy diagram as a kinetic prediction. |
 | Charge conversion | Change in defect charge through exchange with carriers or reservoirs, possibly induced by illumination. | Track where the electron or hole goes. |
